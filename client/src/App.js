@@ -4,6 +4,7 @@ import Books from "./pages/Books";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Login from "./pages/Login";
 
 export default class App extends Component {
   state = {
@@ -15,7 +16,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const user = getCurrentUser()
+    const user = this.getCurrentUser()
     this.setState({ isMounted: true })
   }
 
@@ -37,7 +38,7 @@ export default class App extends Component {
     }
 
     if (this.state.user.anonymous) {
-      return <LoginPage errors={this.state.errors} />
+      return <Login errors={this.state.errors} />
     }
 
     return (

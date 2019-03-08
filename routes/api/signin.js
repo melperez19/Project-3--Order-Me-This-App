@@ -5,6 +5,20 @@ module.exports = (app) => {
   /*
    * Sign up
    */
+  app.get('/api/me', async (req, res, next) => {
+    const { query } = req;
+    const { token } = query;
+    const session = await UserSession.findOne({
+      _id: token,
+      isDeleted: false
+    })
+    if (session) {
+      const user = await User.findOne({ _id: session.userId })
+      res.status(200).json(user)
+    } else {
+      res.status(401).json({ anonymous: true })
+    }
+  })
   app.post('/api/account/signup', (req, res, next) => {
     const { body } = req;
     const {

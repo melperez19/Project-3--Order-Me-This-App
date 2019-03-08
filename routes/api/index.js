@@ -4,6 +4,6 @@ const signinRoutes = require('./signin');
 
 // Book routes
 router.use("/books", bookRoutes);
-router.use('/signin', signinRoutes);
+signinRoutes(router)
 
 module.exports = router;
