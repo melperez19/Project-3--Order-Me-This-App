@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
+// import Books from "./pages/Books";
+// import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
+import Email from "./pages/Email";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
 
@@ -16,7 +17,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const user = this.getCurrentUser()
+    this.getCurrentUser()
     this.setState({ isMounted: true })
   }
 
@@ -31,7 +32,6 @@ export default class App extends Component {
       // handle other response
     }
   }
-
   render = () => {
     if (this.state.isMounted) {
       return <div>Loading...</div>
