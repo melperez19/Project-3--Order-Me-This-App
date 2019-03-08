@@ -5,7 +5,7 @@ module.exports = (app) => {
   /*
    * Sign up
    */
-  app.get('/api/me', async (req, res, next) => {
+  app.get('/me', async (req, res, next) => {
     const { query } = req;
     const { token } = query;
     const session = await UserSession.findOne({
@@ -19,7 +19,7 @@ module.exports = (app) => {
       res.status(401).json({ anonymous: true })
     }
   })
-  app.post('/api/account/signup', (req, res, next) => {
+  app.post('/account/signup', (req, res, next) => {
     const { body } = req;
     const {
       password
@@ -77,7 +77,7 @@ module.exports = (app) => {
       });
     });
   }); // end of sign up endpoint
-  app.post('/api/account/signin', (req, res, next) => {
+  app.post('/account/signin', (req, res, next) => {
     const { body } = req;
     const {
       password
@@ -141,7 +141,7 @@ module.exports = (app) => {
       });
     });
   });
-  app.get('/api/account/logout', (req, res, next) => {
+  app.get('/account/logout', (req, res, next) => {
     // Get the token
     const { query } = req;
     const { token } = query;
@@ -168,7 +168,7 @@ module.exports = (app) => {
       });
     });
   });
-  app.get('/api/account/verify', (req, res, next) => {
+  app.get('/account/verify', (req, res, next) => {
     // Get the token
     const { query } = req;
     const { token } = query;

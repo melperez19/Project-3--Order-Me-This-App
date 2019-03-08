@@ -4,11 +4,11 @@ import 'whatwg-fetch';
 import {
   setInStorage,
   getFromStorage,
-} from '../../utils/storage';
+} from '../utils/storage';
 
 
 
-class Home extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -48,6 +48,7 @@ class Home extends Component {
               token,
               isLoading: false
             });
+            this.props.onSignIn()
           } else {
             this.setState({
               isLoading: false,
@@ -275,4 +276,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Login;

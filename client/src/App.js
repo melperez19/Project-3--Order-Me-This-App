@@ -22,35 +22,42 @@ export default class App extends Component {
   }
 
   getCurrentUser = async () => {
-    const response = await fetch('/api/user')
+    const response = await fetch('/api/me')
     if (response.status === 200) {
       const user = await response.json()
       this.setState({ user: { ...user, anonymous: false } })
     } else {
-      const errors = await response.json()
-      this.setState({ errors })
+      const user = await response.json()
+      this.setState({ user })
       // handle other response
     }
   }
+
+handleSignIn = () => {
+  this.setState({user:{anonymous:false}})
+}
+
   render = () => {
-    if (this.state.isMounted) {
+    if (!this.state.isMounted) {
       return <div>Loading...</div>
     }
 
     if (this.state.user.anonymous) {
-      return <Login errors={this.state.errors} />
+      return <Login errors={this.state.errors} onSignIn={this.handleSignIn} />
     }
 
     return (
       <Router>
         <div>
           <Nav />
+
           <Switch>
             {/* <Route exact path="/" component={Books} />
             <Route exact path="/books" component={Books} />
             <Route exact path="/books/:id" component={Detail} /> */}
             <Route exact path="/" component={Email} />
             <Route component={NoMatch} />
+            <button onClick={this.logout}>Logout</button>
           </Switch>
         </div>
       </Router>
