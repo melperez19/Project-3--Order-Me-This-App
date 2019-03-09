@@ -6,6 +6,10 @@ import NoMatch from "./pages/NoMatch";
 import Email from "./pages/Email";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
+import { LandingPage } from "./pages/LandingPage";
+import { Home } from "./pages/Home";
+import { ProtectedRoute } from "./utils/protectRoute";
+import auth from "./utils/auth";
 
 export default class App extends Component {
   state = {
@@ -33,32 +37,44 @@ export default class App extends Component {
     }
   }
 
-handleSignIn = () => {
-  this.setState({user:{anonymous:false}})
-}
+  handleSignIn = () => {
+    auth.login((isAuthenticated)=> {
+      this.setState({ user: { anonymous: isAuthenticated } })
+    })
+  }
 
   render = () => {
     if (!this.state.isMounted) {
       return <div>Loading...</div>
     }
 
-    if (this.state.user.anonymous) {
-      return <Login errors={this.state.errors} onSignIn={this.handleSignIn} />
-    }
+    
 
     return (
+      
       <Router>
+        
         <div>
-          <Nav />
-
+        <Nav />
           <Switch>
             {/* <Route exact path="/" component={Books} />
             <Route exact path="/books" component={Books} />
             <Route exact path="/books/:id" component={Detail} /> */}
-            <Route exact path="/" component={Email} />
+
+            <Route exact path="/" render={()=>( 
+              auth.isAuthenticated() ? (
+                <Home/>
+              ) : (
+                <LandingPage handleSignIn={this.handleSignIn}/>
+              )
+            ) }/>
+
+            {/* <Route exact path="/" component={LandingPage} />
+            <ProtectedRoute exact path="/app" component={Home} /> */}
+            <Route exact path="/email" component={Email} />
             <Route component={NoMatch} />
-            <button onClick={this.logout}>Logout</button>
           </Switch>
+
         </div>
       </Router>
     );

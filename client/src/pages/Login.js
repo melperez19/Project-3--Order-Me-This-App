@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+
+
 import {
   setInStorage,
   getFromStorage,
@@ -47,8 +49,7 @@ class Login extends Component {
             this.setState({
               token,
               isLoading: false
-            });
-            this.props.onSignIn()
+            }); 
           } else {
             this.setState({
               isLoading: false,
@@ -144,8 +145,8 @@ class Login extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
+        email: signInEmail.trim(),
+        password: signInPassword.trim(),
       }),
     }).then(res => res.json())
       .then(json => {
@@ -158,7 +159,8 @@ class Login extends Component {
             signInPassword: '',
             signInEmail: '',
             token: json.token,
-          });
+          }, this.props.handleSignIn
+          );
         } else {
           this.setState({
             signInError: json.message,
@@ -216,28 +218,30 @@ class Login extends Component {
     if (!token) {
       return (
         <div>
+          
           <div>
             {
               (signInError) ? (
                 <p>{signInError}</p>
               ) : (null)
             }
-            <p>Sign In</p>
+            
+            <p>Sign In To Start Ordering!</p>
             <input
               type="email"
               placeholder="Email"
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
-            <br />
+            
             <input
               type="password"
               placeholder="Password"
               value={signInPassword}
               onChange={this.onTextboxChangeSignInPassword}
             />
-            <br />
-            <button onClick={this.onSignIn}>Sign In</button>
+            
+            <button onClick={this.onSignIn}>Login</button>
           </div>
           <br />
           <br />
@@ -253,13 +257,13 @@ class Login extends Component {
               placeholder="Email"
               value={signUpEmail}
               onChange={this.onTextboxChangeSignUpEmail}
-            /><br />
+            />
             <input
               type="password"
               placeholder="Password"
               value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}
-            /><br />
+            />
             <button onClick={this.onSignUp}>Sign Up</button>
           </div>
 
