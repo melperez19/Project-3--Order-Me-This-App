@@ -2,12 +2,12 @@ body {
     background-color: #00C1D9;
 }
 
-navbar {
+.navbar {
     font-family: 'Laila', serif;
 }
 
 .landingPageTitle {
-    font-family: 'Kalam', cursive;
+    font-family: 'Laila', cursive;
 }
 
 .modal-body {
