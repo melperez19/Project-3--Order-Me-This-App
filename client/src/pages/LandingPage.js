@@ -60,16 +60,3 @@ const {handleSignIn} = props
       </div>
     )
   }
-
-{/* $('.submit').on('click', function () {
-    var userInput = {
-                email: $('#email').val().trim(),
-                password: $('#password').val().trim()
-    };
-     //Collect input
-
-     $.post('/api/signin', userInput, function (data) {
-         $('#email').text(data.email);
-         $('#password').text(data.password);
-         $('#signUpModal').modal();
-     });
