@@ -133,7 +133,7 @@ module.exports = (app) => {
             message: 'Error: server error'
           });
         }
-        return res.send({
+        return res.json({
           success: true,
           message: 'Valid sign in',
           token: doc._id
