@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Books from "./pages/Books";
-// import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Email from "./pages/Email";
+import NoMatch from "./pages/NoMatch/NoMatch";
+import Email from "./pages/Email/Email";
 import Nav from "./components/Nav";
-import Login from "./pages/Login";
-import { LandingPage } from "./pages/LandingPage";
-import { Home } from "./pages/Home";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import Event from "./pages/Event/Event";
+import CreateEvent from "./pages/CreateEvent/CreateEvent";
+import Home from "./pages/Home/Home";
 import { ProtectedRoute } from "./utils/protectRoute";
 import auth from "./utils/auth";
 
@@ -57,9 +56,6 @@ export default class App extends Component {
         <div>
         <Nav />
           <Switch>
-            {/* <Route exact path="/" component={Books} />
-            <Route exact path="/books" component={Books} />
-            <Route exact path="/books/:id" component={Detail} /> */}
 
             <Route exact path="/" render={()=>( 
               auth.isAuthenticated() ? (
@@ -72,6 +68,9 @@ export default class App extends Component {
             {/* <Route exact path="/" component={LandingPage} />
             <ProtectedRoute exact path="/app" component={Home} /> */}
             <Route exact path="/email" component={Email} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/event" component={Event} />
+            <Route exact path="/create" component={CreateEvent} />
             <Route component={NoMatch} />
           </Switch>
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 
 
@@ -11,7 +12,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light mb-2">
+      <nav className="navbar navbar-expand-lg bg-light fixed-top navbar-light mb-2">
         <Link className="navbar-brand" to="/">
           Order Me This
         </Link>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import 'whatwg-fetch';
-
-
 
 import {
   setInStorage,
@@ -23,15 +22,14 @@ class Login extends Component {
       signInPassword: '',
       signUpEmail: '',
       signUpPassword: '',
-    };
 
-    
+    };
 
     this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
     this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
     this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
-    
+
     this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
@@ -49,7 +47,7 @@ class Login extends Component {
             this.setState({
               token,
               isLoading: false
-            }); 
+            });
           } else {
             this.setState({
               isLoading: false,
@@ -218,14 +216,14 @@ class Login extends Component {
     if (!token) {
       return (
         <div>
-          
+
           <div>
             {
               (signInError) ? (
                 <p>{signInError}</p>
               ) : (null)
             }
-            
+
             <p>Sign In To Start Ordering!</p>
             <input
               type="email"
@@ -233,15 +231,15 @@ class Login extends Component {
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
-            
+
             <input
               type="password"
               placeholder="Password"
               value={signInPassword}
               onChange={this.onTextboxChangeSignInPassword}
             />
-            
-            <button onClick={this.onSignIn}>Login</button>
+
+            <button className="btn btn-primary" onClick={this.onSignIn}>Login</button>
           </div>
           <br />
           <br />
@@ -264,7 +262,7 @@ class Login extends Component {
               value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}
             />
-            <button onClick={this.onSignUp}>Sign Up</button>
+            <button className="btn btn-primary" onClick={this.onSignUp}>Sign Up</button>
           </div>
 
         </div>
@@ -274,7 +272,11 @@ class Login extends Component {
     return (
       <div>
         <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
+        <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+        <br />
+        <button className="btn btn-primary" onClick={<Link className="navbar-brand" to="/home" />}>
+          Take me to the Home Page
+        </button>
       </div>
     );
   }
