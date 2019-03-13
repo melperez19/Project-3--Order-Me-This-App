@@ -18,7 +18,7 @@ class LandingPage extends Component {
         return (
             <div className="landingPageBackground">
                 <div className="container">
-                    <div className="row d-flex align-items-center justify-content-end">
+                    <div className="row d-flex align-items-center landingPageMainText">
                         <div className="col">
                             <div className="landingPageTitle">
                                 <h1>Order Me This</h1>
@@ -31,7 +31,7 @@ class LandingPage extends Component {
                                 onClick={this.toggleModal}
                                 id="signUpButton"
                                 value="SignUp | LogIn"
-                                className="btn btn-success" />
+                                className="btn btn-primary" />
 
                             <Modal
                                 show={this.state.show}

@@ -223,23 +223,31 @@ class Login extends Component {
                 <p>{signInError}</p>
               ) : (null)
             }
+            <div className="row">
+              <p>Sign In To Start Ordering!</p>
+              </div>
+              <div className="row">
+              <div className="col d-flex flex-column justify-content-center">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={signInEmail}
+                  className="flex-grow"
+                  onChange={this.onTextboxChangeSignInEmail}
+                />
 
-            <p>Sign In To Start Ordering!</p>
-            <input
-              type="email"
-              placeholder="Email"
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
-            />
-
-            <input
-              type="password"
-              placeholder="Password"
-              value={signInPassword}
-              onChange={this.onTextboxChangeSignInPassword}
-            />
-
-            <button className="btn btn-primary" onClick={this.onSignIn}>Login</button>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={signInPassword}
+                  className="flex-grow"
+                  onChange={this.onTextboxChangeSignInPassword}
+                />
+              </div>
+              <div className="col d-flex justify-content-end">
+                <button className="btn btn-primary" onClick={this.onSignIn}>Login</button>
+              </div>
+            </div>
           </div>
           <br />
           <br />
@@ -249,22 +257,31 @@ class Login extends Component {
                 <p>{signUpError}</p>
               ) : (null)
             }
-            <p>Sign Up</p>
-            <input
-              type="email"
-              placeholder="Email"
-              value={signUpEmail}
-              onChange={this.onTextboxChangeSignUpEmail}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={signUpPassword}
-              onChange={this.onTextboxChangeSignUpPassword}
-            />
-            <button className="btn btn-primary" onClick={this.onSignUp}>Sign Up</button>
+            <div className="row">
+              <p>Sign Up</p>
+            </div>
+            <div className="row">
+              <div className="col d-flex flex-column justify-content-center">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={signUpEmail}
+                  className="flex-grow"
+                  onChange={this.onTextboxChangeSignUpEmail}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={signUpPassword}
+                  className="flex-grow"
+                  onChange={this.onTextboxChangeSignUpPassword}
+                />
+              </div>
+              <div className="col d-flex justify-content-end">
+                <button className="btn btn-primary" onClick={this.onSignUp}>Sign Up</button>
+              </div>
+            </div>
           </div>
-
         </div>
       );
     }

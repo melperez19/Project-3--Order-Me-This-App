@@ -1,17 +1,27 @@
 .landingPageBackground {
     background-attachment: fixed;
-    background-image: url(/assets/images/noLunch.jpg);
+    background-image: url(/assets/images/veggies.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 58px;
-    min-height: 100vh;
+    margin-top: 58px;
+    margin-left: 58px;
+    margin-right: 58px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .container {
     background-color: rgba(0, 0, 0, 0.406);
     color: #fff;
 }
 
+.landingPageMainText {
+    position: relative;
+ 
+
+}
+
 #signUpButton {
     margin-top: 20px;
+    max-width: 312px;
 }
 
