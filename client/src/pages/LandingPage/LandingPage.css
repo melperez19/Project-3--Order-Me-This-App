@@ -1,0 +1,17 @@
+.landingPageBackground {
+    background-attachment: fixed;
+    background-image: url(/assets/images/noLunch.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 58px;
+    min-height: 100vh;
+}
+.container {
+    background-color: rgba(0, 0, 0, 0.406);
+    color: #fff;
+}
+
+#signUpButton {
+    margin-top: 20px;
+}
+
