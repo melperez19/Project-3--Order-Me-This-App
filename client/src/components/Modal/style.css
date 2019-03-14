@@ -1,16 +1,12 @@
 .backdropStyle {
-    background-color: #000, .3;
-    padding: 50px;
+    padding-bottom: 21px;
 }
 
 .modalStyle {
     background-color: #fff;
     border-radius: 5px;
-    max-width: 500px;
-    min-height: 300px;
-    margin: 0, auto;
+    max-width: 312px;
     padding: 30px;
-    position: relative;
     color: #000;
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./LandingPage.css";
 import Modal from "../../components/Modal";
 import Login from "../Login";
+import { Container } from "../../components/Grid";
 
 class LandingPage extends Component {
 
@@ -16,13 +17,13 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className="landingPageBackground">
-                <div className="container">
-                    <div className="row d-flex align-items-center justify-content-end">
+            <Container>
+            <div className="landingPageBackground d-flex align-items-center justify-content-center">
+                    <div className="landingPageMainText">
                         <div className="col">
                             <div className="landingPageTitle">
-                                <h1>Order Me This</h1>
-                                <h3>Organize your office lunch runs</h3>
+                                <h1 className="text-center">Order Me This</h1>
+                                <h4>Organize your office lunch runs</h4>
                             </div>
 
                         </div>
@@ -31,7 +32,7 @@ class LandingPage extends Component {
                                 onClick={this.toggleModal}
                                 id="signUpButton"
                                 value="SignUp | LogIn"
-                                className="btn btn-success" />
+                                className="btn btn-primary" />
 
                             <Modal
                                 show={this.state.show}
@@ -41,11 +42,8 @@ class LandingPage extends Component {
                         </div>
 
                     </div>
-
-
-                </div>
-
             </div>
+            </Container>
         )
 
     }
