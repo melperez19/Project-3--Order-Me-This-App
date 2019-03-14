@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'whatwg-fetch';
 
+
 import {
   setInStorage,
   getFromStorage,
@@ -36,7 +37,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const obj = getFromStorage('the_main_app');
+    const obj = getFromStorage('order_me_this_app');
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -150,7 +151,7 @@ class Login extends Component {
       .then(json => {
         console.log('json', json);
         if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
+          setInStorage('order_me_this_app', { token: json.token });
           this.setState({
             signInError: json.message,
             isLoading: false,
@@ -172,7 +173,7 @@ class Login extends Component {
     this.setState({
       isLoading: true,
     });
-    const obj = getFromStorage('the_main_app');
+    const obj = getFromStorage('order_me_this_app');
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -287,13 +288,15 @@ class Login extends Component {
     }
 
     return (
+     
       <div>
-        <p>Account</p>
+         
         <button className="btn btn-primary" onClick={this.logout}>Logout</button>
         <br />
         <button className="btn btn-primary" onClick={<Link className="navbar-brand" to="/home" />}>
           Take me to the Home Page
         </button>
+        
       </div>
     );
   }

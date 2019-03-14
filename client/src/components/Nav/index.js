@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { 
+  Link
+} from "react-router-dom";
 import "./style.css";
+import ConfirmOrder from "../../pages/ConfirmOrder/ConfirmOrder";
+import EventInfo from "../../pages/Event/Event";
+
+
+
+
 
 
 
@@ -32,13 +40,23 @@ class Nav extends Component {
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={window.location.pathname === "/account/signup" ? "nav-link active" : "nav-link"}
-                to="/account/signup"
+                className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
+                to="/home"
               >
-                SignUp | Login
+                Create Event {EventInfo}
       </Link>
             </li>
-
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/confirm" ? "nav-link active" : "nav-link"}
+                to="/confirm"
+              >
+                Confirm Order {ConfirmOrder}
+      </Link>
+            </li>
+            
+           
 
           </ul>
         </div>

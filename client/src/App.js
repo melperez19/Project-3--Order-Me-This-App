@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch/NoMatch";
-import Email from "./pages/Email/Email";
-import Nav from "./components/Nav";
+
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Event from "./pages/Event/Event";
-import CreateEvent from "./pages/CreateEvent/CreateEvent";
+import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
+
 import Home from "./pages/Home/Home";
 import { ProtectedRoute } from "./utils/protectRoute";
 import auth from "./utils/auth";
@@ -54,7 +54,7 @@ export default class App extends Component {
       <Router>
         
         <div>
-        <Nav />
+        
           <Switch>
 
             <Route exact path="/" render={()=>( 
@@ -67,10 +67,9 @@ export default class App extends Component {
 
             {/* <Route exact path="/" component={LandingPage} />
             <ProtectedRoute exact path="/app" component={Home} /> */}
-            <Route exact path="/email" component={Email} />
             <Route exact path="/home" component={Home} />
-            <Route exact path="/event" component={Event} />
-            <Route exact path="/create" component={CreateEvent} />
+            <Route exact path="/home" component={Event} />
+            <Route exact path="/confirm" component={ConfirmOrder} />
             <Route component={NoMatch} />
           </Switch>
 

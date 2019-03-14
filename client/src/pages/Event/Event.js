@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./Event.css";
 
+
 class Event extends Component {
     render() {
         return (
+            
             <div className="eventBackground">
                 <div className="container">
                     <div className="row">
@@ -20,6 +22,7 @@ class Event extends Component {
                 </div>
 
             </div>
+           
         )
     }
 }
