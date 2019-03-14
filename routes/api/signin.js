@@ -72,7 +72,7 @@ module.exports = (app) => {
         }
         return res.send({
           success: true,
-          message: 'Signed up'
+          message: 'Signed up Successfully'
         });
       });
     });
