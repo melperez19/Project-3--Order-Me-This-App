@@ -3,22 +3,18 @@
     background-image: url(/assets/images/veggies.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    margin-top: 58px;
+    margin-top: 116px;
     margin-left: 58px;
     margin-right: 58px;
     padding-top: 50px;
     padding-bottom: 50px;
+    min-height: 390px;
 }
 .container {
-    background-color: rgba(0, 0, 0, 0.406);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
 }
 
-.landingPageMainText {
-    position: relative;
- 
-
-}
 
 #signUpButton {
     margin-top: 20px;

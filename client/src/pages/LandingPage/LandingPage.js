@@ -16,13 +16,13 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className="landingPageBackground">
+            <div className="landingPageBackground d-flex align-items-center">
                 <div className="container">
                     <div className="row d-flex align-items-center landingPageMainText">
                         <div className="col">
                             <div className="landingPageTitle">
-                                <h1>Order Me This</h1>
-                                <h3>Organize your office lunch runs</h3>
+                                <h1 className="text-center">Order Me This</h1>
+                                <h4>Organize your office lunch runs</h4>
                             </div>
 
                         </div>
