@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./LandingPage.css";
 import Modal from "../../components/Modal";
 import Login from "../Login";
+import { Container } from "../../components/Grid";
 
 class LandingPage extends Component {
 
@@ -16,9 +17,9 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className="landingPageBackground d-flex align-items-center">
-                <div className="container">
-                    <div className="row d-flex align-items-center landingPageMainText">
+            <Container>
+            <div className="landingPageBackground d-flex align-items-center justify-content-center">
+                    <div className="landingPageMainText">
                         <div className="col">
                             <div className="landingPageTitle">
                                 <h1 className="text-center">Order Me This</h1>
@@ -41,11 +42,8 @@ class LandingPage extends Component {
                         </div>
 
                     </div>
-
-
-                </div>
-
             </div>
+            </Container>
         )
 
     }
