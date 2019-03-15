@@ -6,14 +6,14 @@ import Slide from 'react-reveal/Slide';
 
 
 
-class ConfirmOrder extends Component {
+class MyEvents extends Component {
     render() {
         return (
             <Slide left>
                 <div>
                     <Nav />
                     <Container>
-                        <h1> Confirm Order </h1>
+                        <h1> My Events - All events made by Host </h1>
                     </Container>
                 </div>
             </Slide>
@@ -21,4 +21,4 @@ class ConfirmOrder extends Component {
     }
 }
 
-export default ConfirmOrder;
+export default MyEvents;

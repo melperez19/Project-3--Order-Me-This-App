@@ -4,7 +4,7 @@ import NoMatch from "./pages/NoMatch/NoMatch";
 
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Event from "./pages/Event/Event";
-import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder";
+import MyEvents from "./pages/MyEvents/MyEvents";
 
 import Home from "./pages/Home/Home";
 import { ProtectedRoute } from "./utils/protectRoute";
@@ -69,7 +69,7 @@ export default class App extends Component {
             <ProtectedRoute exact path="/app" component={Home} /> */}
             <Route exact path="/home" component={Home} />
             <Route exact path="/home" component={Event} />
-            <Route exact path="/confirm" component={ConfirmOrder} />
+            <Route exact path="/myEvents" component={MyEvents} />
             <Route component={NoMatch} />
           </Switch>
 
