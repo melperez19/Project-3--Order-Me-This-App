@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { 
+import {
   Link
 } from "react-router-dom";
 import "./style.css";
-import ConfirmOrder from "../../pages/ConfirmOrder/ConfirmOrder";
+import MyEvents from "../../pages/MyEvents/MyEvents";
 import EventInfo from "../../pages/Event/Event";
 
 
@@ -44,19 +44,23 @@ class Nav extends Component {
                 to="/home"
               >
                 Create Event {EventInfo}
-      </Link>
+              </Link>
             </li>
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={window.location.pathname === "/confirm" ? "nav-link active" : "nav-link"}
-                to="/confirm"
+                className={window.location.pathname === "/myEvents" ? "nav-link active" : "nav-link"}
+                to="/myEvents"
               >
-                Confirm Order {ConfirmOrder}
-      </Link>
+                My Events {MyEvents}
+              </Link>
             </li>
-            
-           
+            <li className="nav-item">
+              <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+            </li>
+
+
+
 
           </ul>
         </div>

@@ -10,7 +10,7 @@ class Email extends Component {
         orderDateTime: "",
         restaurantName: "",
         sendToEmail: [],
-        sendToName: [],
+        // sendToName: [],
         fromName: "",
         message: ""
     };
@@ -33,7 +33,7 @@ class Email extends Component {
             this.state.orderDateTime,
             this.state.restaurantName,
             this.state.sendToEmail,
-            this.state.sendToName,
+            // this.state.sendToName,
             this.state.fromName,
             this.state.message
         )
@@ -43,7 +43,7 @@ class Email extends Component {
         })
     }
 
-    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, sendToEmail, sendToName, fromName, message) {
+    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, sendToEmail, fromName, message) {
         var template_params = {
             event_name: eventName,
             event_date: eventDateTime,
@@ -51,7 +51,7 @@ class Email extends Component {
             restaurant_name: restaurantName,
             to_email: sendToEmail,
             from_name: fromName,
-            to_name: sendToName,
+            // to_name: sendToName,
             message_html: message
         }
         window.emailjs.send(
@@ -77,15 +77,16 @@ class Email extends Component {
                 <Row>
                     <Col size="12">
                         <form>
-                            <div className="row d-flex align-items-center">
+                            {/* <div >
                                 <p className="emailLetterText">
-                                    Dear </p> <Input
+                                    Dear  <Input
                                     value={this.state.sendToName}
                                     onChange={this.handleInputChange}
                                     name="sendToName"
                                     placeholder="Send To Name (required)"
-                                />
-                            </div>
+                                /></p>
+                            </div> */}
+                            
                             <Input
                                 value={this.state.sendToEmail}
                                 onChange={this.handleInputChange}
@@ -95,7 +96,7 @@ class Email extends Component {
 
                             <div className="row d-flex align-items-center">
                                 <p className="emailLetterText">
-                                    You are invited submit an order for this event called: </p>
+                                    You are invited to submit an order for this event called: </p>
                                 <Input
                                     value={this.state.eventName}
                                     onChange={this.handleInputChange}
@@ -145,7 +146,7 @@ class Email extends Component {
                             <button type="submit" className="btn btn-primary">Confirm</button>
                             <button
                                 className="btn btn-primary mx-3"
-                                disabled={!(this.state.sendToName && this.state.sendToEmail)}
+                                disabled={!(this.state.sendToEmail)}
                                 onClick={this.handleFormSubmit}
                             >
                                 Send

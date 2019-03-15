@@ -10,12 +10,13 @@ class Event extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <div className="EventTitle"></div>
-                            <div className="Date"></div>
-                            <div className="Notes"></div>
-                            <div className="Location"></div>
-                            <div className="Deadline"></div>
-                            <div className="Order"></div>
+                            <div className="fromName"></div>
+                            <div className="eventName"></div>
+                            <div className="eventDateTime"></div>
+                            <div className="orderDateTime"></div>
+                            <div className="restaurantName"></div>
+                            <div className="order"></div>
+  
                         </div>
                     </div>
 

@@ -32,7 +32,7 @@ class LandingPage extends Component {
                                 </div>
                             </div>
                             
-                            <div className="col d-flex justify-content-center flex-column">
+                            <div className="col d-flex justify-content-center flex-column mb-3">
                                 <input type="button"
                                     onClick={this.toggleModal}
                                     id="signUpButton"
