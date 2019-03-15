@@ -290,7 +290,7 @@ class Login extends Component {
     return (
      
       <div>
-         
+        
         <button className="btn btn-primary" onClick={this.logout}>Logout</button>
         <br />
         <button className="btn btn-primary" onClick={<Link className="navbar-brand" to="/home" />}>

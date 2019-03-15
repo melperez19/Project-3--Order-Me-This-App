@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { 
+import {
   Link
 } from "react-router-dom";
 import "./style.css";
@@ -44,7 +44,7 @@ class Nav extends Component {
                 to="/home"
               >
                 Create Event {EventInfo}
-      </Link>
+              </Link>
             </li>
             <li className="nav-item">
               <Link
@@ -53,10 +53,14 @@ class Nav extends Component {
                 to="/confirm"
               >
                 Confirm Order {ConfirmOrder}
-      </Link>
+              </Link>
             </li>
-            
-           
+            <li className="nav-item">
+              <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+            </li>
+
+
+
 
           </ul>
         </div>
