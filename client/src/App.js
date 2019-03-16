@@ -38,10 +38,8 @@ export default class App extends Component {
     }
   }
 
-  handleSignIn = () => {
-    auth.login((isAuthenticated)=> {
-      this.setState({ user: { anonymous: isAuthenticated } })
-    })
+  setUser = user => {
+    this.setState({ user })
   }
 
   render = () => {
@@ -51,7 +49,7 @@ export default class App extends Component {
 
     return (
       <ApplicationContext.Provider value={{
-        setUser: 
+        setUser: this.setUser,
         user: this.state.user,
       }}>
         <Router>
@@ -64,7 +62,7 @@ export default class App extends Component {
                 auth.isAuthenticated() ? (
                   <Home/>
                 ) : (
-                  <LandingPage handleSignIn={this.handleSignIn}/>
+                  <LandingPage />
                 )
               ) }/>
 

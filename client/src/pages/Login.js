@@ -130,22 +130,26 @@ class Login extends Component {
       .then(json => {
         console.log('json', json);
         if (json.success) {
-          this.context.setUser({...json.user, anonymous: false })
           this.setState({
             signInError: json.message,
             isLoading: false,
             signInEmail: '',
-          }, this.props.handleSignIn);
+          }, () => {
+            this.context.setUser({...json.user, anonymous: false })
+          });
         } else {
           this.setState({
             signInError: json.message,
             isLoading: false,
+          }, () => {
+            this.context.setUser({ anonymous: true })
           });
         }
       });
   }
 
   logout() {
+    this.context.setUser({ anonymous: true })
     this.setState({
       isLoading: true,
     }, () => {
@@ -178,11 +182,7 @@ class Login extends Component {
         <div>
 
           <div>
-            {
-              (signInError) ? (
-                <p>{signInError}</p>
-              ) : (null)
-            }
+            {signInError && <p>{signInError}</p>}
             <div className="row">
               <p>Sign In To Start Ordering!</p>
               </div>
@@ -252,9 +252,10 @@ class Login extends Component {
         
         <button className="btn btn-primary" onClick={this.logout}>Logout</button>
         <br />
-        <button className="btn btn-primary" onClick={<Link className="navbar-brand" to="/home" />}>
-          Take me to the Home Page
-        </button>
+
+        <Link className="navbar-brand" to="/home">
+          <div className="btn btn-primary">Take me to the Home Page</div>
+        </Link>
         
       </div>
     );

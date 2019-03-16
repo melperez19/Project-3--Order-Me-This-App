@@ -13,7 +13,7 @@ class MyEvents extends Component {
         this.loadEvents();
     }
     loadEvents = () => {
-        API.getEvent()
+        API.loadEvents()
             .then(res => this.setState({ events: res.data }))
             .catch(err => console.log(err));
     };
@@ -42,9 +42,9 @@ class MyEvents extends Component {
                                         deleteEvent={this.deleteEvent}
                                         eventName={event.eventName}
                                         eventDateTime={event.eventDateTime}
-                                        link={event.link}
                                         message={event.message}
                                         orderDateTime={event.orderDateTime}
+                                        restaurantMenuURL={event.restaurantMenuURL}
                                         restaurantName={event.restaurantName}
                                         sendToEmail={event.sendToEmail}
                                         />

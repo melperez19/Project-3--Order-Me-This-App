@@ -32,7 +32,7 @@
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
     
 }
-.form-group {
+.form-group, .MuiFormControl-root-1 {
     border: 2px solid rgba(0,172,173, .6);
     border-radius: 7px;
     -webkit-box-shadow: 

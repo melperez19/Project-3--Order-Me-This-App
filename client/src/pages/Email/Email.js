@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
 import "./Email.css";
+import TextField from '@material-ui/core/TextField';
 
 class Email extends Component {
     state = {
@@ -9,6 +10,7 @@ class Email extends Component {
         eventDateTime: "",
         orderDateTime: "",
         restaurantName: "",
+        restaurantMenuURL: "",
         sendToEmail: [],
         // sendToName: [],
         fromName: "",
@@ -32,6 +34,7 @@ class Email extends Component {
             this.state.eventDateTime,
             this.state.orderDateTime,
             this.state.restaurantName,
+            this.state.restaurantMenuURL,
             this.state.sendToEmail,
             // this.state.sendToName,
             this.state.fromName,
@@ -43,14 +46,17 @@ class Email extends Component {
         })
     }
 
-    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, sendToEmail, fromName, message) {
+    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message) {
         var template_params = {
             event_name: eventName,
             event_date: eventDateTime,
             order_date: orderDateTime,
             restaurant_name: restaurantName,
+            restaurant_menu_URL: restaurantMenuURL,
             to_email: sendToEmail,
             from_name: fromName,
+            // order_me_this_event_link: "https://powerful-journey-65247.herokuapp.com/",
+            order_me_this_event_link: "http://localhost:3000/event",
             // to_name: sendToName,
             message_html: message
         }
@@ -95,7 +101,7 @@ class Email extends Component {
                                 placeholder="Event Name"
                             />
                             <small>Separate emails by a comma (ex. Joe@gmail.com, Mandy@email.com).</small>
-                            <Input
+                            <TextArea
                                 value={this.state.sendToEmail}
                                 onChange={this.handleInputChange}
                                 name="sendToEmail"
@@ -109,17 +115,37 @@ class Email extends Component {
                                 placeholder="Name of Restaurant"
                             />
                             <Input
-                                value={this.state.eventDateTime}
+                                value={this.state.restaurantMenuURL}
                                 onChange={this.handleInputChange}
-                                name="eventDateTime"
-                                placeholder="Date and Time of Event"
+                                name="restaurantMenuURL"
+                                id="inputEmailInvite"
+                                placeholder="Restaurant Menu Link"
                             />
-
-                            <Input
-                                value={this.state.orderDateTime}
+                            <TextField
+                                value={this.state.eventDateTime}
+                                className="datepickers"
+                                id="datetime-local"
+                                label="Date/Time of Event"
+                                type="datetime-local"
                                 onChange={this.handleInputChange}
+                                defaultValue={Date.now()}
+                                name="eventDateTime"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <TextField
+                                value={this.state.orderDateTime}
+                                className="datepickers"
+                                id="datetime-local"
+                                label="Order Must Be Placed By"
+                                type="datetime-local"
+                                onChange={this.handleInputChange}
+                                defaultValue={Date.now()}
                                 name="orderDateTime"
-                                placeholder="Date and Time Orders Must Be Placed By"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
                             />
 
                             <TextArea
@@ -141,7 +167,11 @@ class Email extends Component {
                                 <button type="submit" className="btn btn-primary">Confirm</button>
                                 <button
                                     className="btn btn-primary mx-3"
-                                    disabled={!(this.state.sendToEmail)}
+                                    disabled={!(this.state.sendToEmail && 
+                                        this.state.eventName && 
+                                        this.state.restaurantName &&
+                                        this.state.eventDateTime &&
+                                        this.state.orderDateTime)}
                                     onClick={this.handleFormSubmit}
                                 >
                                     Send
