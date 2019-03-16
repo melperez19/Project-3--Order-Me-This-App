@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the eventController
+// Defining methods for the eventsController
 module.exports = {
   findAll: function(req, res) {
     db.Event
@@ -11,7 +11,7 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Event
-      .findById(req.params.id)
+      .findOne({_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

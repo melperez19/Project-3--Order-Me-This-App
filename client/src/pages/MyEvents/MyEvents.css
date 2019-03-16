@@ -1,9 +1,9 @@
-.homeBackground {
+.myEventsBackground {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: rgb(0,0,0,.3);
-    background-image: url(/assets/images/typewriter.jpg);
+    background-image: url(/assets/images/quinoaLunch.jpg);
     border: 2px solid #fff;
     -webkit-box-shadow: 
     inset 8px 8px 4px rgba(0,0,0,0.3),
@@ -17,7 +17,7 @@
     min-height: 390px;
 }
 
-.homeArea {
+.myEventsArea {
     border: 2px solid rgb(0,172,173);
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -32,7 +32,7 @@
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
     
 }
-.form-group, .MuiFormControl-root-1 {
+.form-group {
     border: 2px solid rgba(0,172,173, .6);
     border-radius: 7px;
     -webkit-box-shadow: 
@@ -43,7 +43,7 @@
           1px 1px 3px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 3px rgba(0,0,0,.3);
 }
-.homeTitle{
+.myEventsTitle {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     

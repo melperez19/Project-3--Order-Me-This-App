@@ -3,13 +3,6 @@ import {
   Link
 } from "react-router-dom";
 import "./style.css";
-import MyEvents from "../../pages/MyEvents/MyEvents";
-import EventInfo from "../../pages/Event/Event";
-
-
-
-
-
 
 
 class Nav extends Component {
@@ -43,7 +36,7 @@ class Nav extends Component {
                 className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
                 to="/home"
               >
-                Create Event {EventInfo}
+                Create Event
               </Link>
             </li>
             <li className="nav-item">
@@ -52,7 +45,7 @@ class Nav extends Component {
                 className={window.location.pathname === "/myEvents" ? "nav-link active" : "nav-link"}
                 to="/myEvents"
               >
-                My Events {MyEvents}
+                My Events 
               </Link>
             </li>
             <li className="nav-item">

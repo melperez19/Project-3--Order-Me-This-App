@@ -3,11 +3,15 @@ const bcrypt = require('bcrypt');
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
-    default: ''
+    default: '',
+    unique: true,
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
   },
   password: {
     type: String,
-    default: ''
+    default: '',
+    match:/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/,
+    minlength:5
   },
   isDeleted: {
     type: Boolean,
