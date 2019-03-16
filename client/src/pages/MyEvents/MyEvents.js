@@ -3,7 +3,7 @@ import Nav from "../../components/Nav";
 import Slide from 'react-reveal/Slide';
 import "./MyEvents.css";
 import CreatedEvents from "../../components/CreatedEvents";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 class MyEvents extends Component {
     state = {
@@ -13,7 +13,7 @@ class MyEvents extends Component {
         this.loadEvents();
     }
     loadEvents = () => {
-        API.getEvents()
+        API.getEvent()
             .then(res => this.setState({ events: res.data }))
             .catch(err => console.log(err));
     };

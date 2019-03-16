@@ -1,29 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import ApplicationContext from '../ApplicationContext';
 import 'whatwg-fetch';
 
-
-import {
-  setInStorage,
-  getFromStorage,
-} from '../utils/storage';
-
-
-
 class Login extends Component {
+  static contextType = ApplicationContext;
+
   constructor(props) {
     super(props);
 
     this.state = {
       isLoading: true,
-      token: '',
       signUpError: '',
       signInError: '',
       signInEmail: '',
       signInPassword: '',
       signUpEmail: '',
       signUpPassword: '',
-
     };
 
     this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
@@ -36,30 +29,16 @@ class Login extends Component {
     this.logout = this.logout.bind(this);
   }
 
+  state = {
+    isLoading: true,
+  }
+
   componentDidMount() {
-    const obj = getFromStorage('order_me_this_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/verify?token=' + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token,
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
+    fetch('/api/account/verify')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ isLoading: false });
       });
-    }
   }
 
   onTextboxChangeSignInEmail(event) {
@@ -151,15 +130,12 @@ class Login extends Component {
       .then(json => {
         console.log('json', json);
         if (json.success) {
-          setInStorage('order_me_this_app', { token: json.token });
+          this.context.setUser({...json.user, anonymous: false })
           this.setState({
             signInError: json.message,
             isLoading: false,
-            signInPassword: '',
             signInEmail: '',
-            token: json.token,
-          }, this.props.handleSignIn
-          );
+          }, this.props.handleSignIn);
         } else {
           this.setState({
             signInError: json.message,
@@ -172,36 +148,18 @@ class Login extends Component {
   logout() {
     this.setState({
       isLoading: true,
-    });
-    const obj = getFromStorage('order_me_this_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/logout?token=' + token)
+    }, () => {
+      fetch('/api/account/logout')
         .then(res => res.json())
         .then(json => {
-          if (json.success) {
-            this.setState({
-              token: '',
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
+          this.setState({ isLoading: false });
         });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
+    });
+}
 
   render() {
     const {
       isLoading,
-      token,
       signInError,
       signInEmail,
       signInPassword,
@@ -209,12 +167,13 @@ class Login extends Component {
       signUpPassword,
       signUpError,
     } = this.state;
+    const { user } = this.context;
 
     if (isLoading) {
       return (<div><p>Loading...</p></div>);
     }
 
-    if (!token) {
+    if (user.anonymous) {
       return (
         <div>
 

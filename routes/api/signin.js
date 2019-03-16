@@ -6,8 +6,8 @@ module.exports = (app) => {
    * Sign up
    */
   app.get('/me', async (req, res, next) => {
-    const { query } = req;
-    const { token } = query;
+    const { token } = req.session;
+
     const session = await UserSession.findOne({
       _id: token,
       isDeleted: false
@@ -133,19 +133,23 @@ module.exports = (app) => {
             message: 'Error: server error'
           });
         }
+
+        const userPayload = {...user}
+        delete userPayload.password
+
+        req.session = { token: doc._id }
         return res.json({
-          success: true,
           message: 'Valid sign in',
-          token: doc._id
+          success: true,
+          user: userPayload,
         });
       });
     });
   });
   app.get('/account/logout', (req, res, next) => {
     // Get the token
-    const { query } = req;
-    const { token } = query;
-    // ?token=test
+    const { token } = req.session
+
     // Verify the token is one of a kind and it's not deleted.
     UserSession.findOneAndUpdate({
       _id: token,
@@ -170,9 +174,8 @@ module.exports = (app) => {
   });
   app.get('/account/verify', (req, res, next) => {
     // Get the token
-    const { query } = req;
-    const { token } = query;
-    // ?token=test
+    const { token } = req.session;
+
     // Verify the token is one of a kind and it's not deleted.
     UserSession.find({
       _id: token,

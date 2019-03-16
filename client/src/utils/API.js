@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all events
-  getEvent: function() {
+  loadEvents: function() {
     return axios.get("/api/event");
   },
   // Gets the event with the given id

@@ -10,6 +10,8 @@ import Home from "./pages/Home/Home";
 import { ProtectedRoute } from "./utils/protectRoute";
 import auth from "./utils/auth";
 
+import ApplicationContext from './ApplicationContext';
+
 export default class App extends Component {
   state = {
     errors: null,
@@ -47,35 +49,37 @@ export default class App extends Component {
       return <div>Loading...</div>
     }
 
-    
-
     return (
-      
-      <Router>
-        
-        <div>
-        
-          <Switch>
+      <ApplicationContext.Provider value={{
+        setUser: 
+        user: this.state.user,
+      }}>
+        <Router>
+          
+          <div>
+          
+            <Switch>
 
-            <Route exact path="/" render={()=>( 
-              auth.isAuthenticated() ? (
-                <Home/>
-              ) : (
-                <LandingPage handleSignIn={this.handleSignIn}/>
-              )
-            ) }/>
+              <Route exact path="/" render={()=>( 
+                auth.isAuthenticated() ? (
+                  <Home/>
+                ) : (
+                  <LandingPage handleSignIn={this.handleSignIn}/>
+                )
+              ) }/>
 
-            {/* <Route exact path="/" component={LandingPage} />
-            <ProtectedRoute exact path="/app" component={Home} /> */}
-            <Route exact path="/landingPage" component={LandingPage} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/home" component={Event} />
-            <Route exact path="/myEvents" component={MyEvents} />
-            <Route component={NoMatch} />
-          </Switch>
+              {/* <Route exact path="/" component={LandingPage} />
+              <ProtectedRoute exact path="/app" component={Home} /> */}
+              <Route exact path="/landingPage" component={LandingPage} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/home" component={Event} />
+              <Route exact path="/myEvents" component={MyEvents} />
+              <Route component={NoMatch} />
+            </Switch>
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </ApplicationContext.Provider>
     );
   }
 }
