@@ -22,11 +22,11 @@ class Home extends Component {
 
                 <div className="container d-flex justify-content-center">
                 <div className="homeBackground justify-content-center">
-                    <div className="host-id col text-center">
+                    <div className="homeTitle col text-center">
                         <p>Welcome, Username</p>
                         <p>Fill in the blanks to send your invitations.</p>
                     </div>
-                    <div className="letterArea p-3">
+                    <div className="homeArea p-3">
                         <Email />
                     </div>
                 </div>
