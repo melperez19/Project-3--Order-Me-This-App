@@ -86,46 +86,41 @@ class Email extends Component {
                                     placeholder="Send To Name (required)"
                                 /></p>
                             </div> */}
-                            
+
+                            <small>The title will be a reference in MyEvents and a link to this event.</small>
+                            <Input
+                                value={this.state.eventName}
+                                onChange={this.handleInputChange}
+                                name="eventName"
+                                placeholder="Event Name"
+                            />
+                            <small>Separate emails by a comma (ex. Joe@gmail.com, Mandy@email.com).</small>
                             <Input
                                 value={this.state.sendToEmail}
                                 onChange={this.handleInputChange}
                                 name="sendToEmail"
                                 placeholder="Send To Email (required)"
                             />
+                            <small>Fill out some details for the invitations.</small>
+                            <Input
+                                value={this.state.restaurantName}
+                                onChange={this.handleInputChange}
+                                name="restaurantName"
+                                placeholder="Name of Restaurant"
+                            />
+                            <Input
+                                value={this.state.eventDateTime}
+                                onChange={this.handleInputChange}
+                                name="eventDateTime"
+                                placeholder="Date and Time of Event"
+                            />
 
-                            <div className="row d-flex align-items-center">
-                                <p className="emailLetterText">
-                                    You are invited to submit an order for this event called: </p>
-                                <Input
-                                    value={this.state.eventName}
-                                    onChange={this.handleInputChange}
-                                    name="eventName"
-                                    id="inputEmailInvite"
-                                    placeholder="Event Name"
-                                /> <p className="emailLetterBodyText">
-                                    at</p> <Input
-                                    value={this.state.restaurantName}
-                                    onChange={this.handleInputChange}
-                                    name="restaurantName"
-                                    id="inputEmailInvite"
-                                    placeholder="Name of Restaurant"
-                                /> <p className="emailLetterBodyText">
-                                    on this date </p><Input
-                                    value={this.state.eventDateTime}
-                                    onChange={this.handleInputChange}
-                                    name="eventDateTime"
-                                    id="inputEmailInvite"
-                                    placeholder="Date and Time of Event"
-                                /><p className="emailLetterText">.</p></div>
-
-                            <div className="row d-flex align-items-center">
-                                <p className="emailLettTexter">Please order by</p> <Input
-                                    value={this.state.orderDateTime}
-                                    onChange={this.handleInputChange}
-                                    name="orderDateTime"
-                                    placeholder="Date and Time Orders Must Be Placed By"
-                                /></div>
+                            <Input
+                                value={this.state.orderDateTime}
+                                onChange={this.handleInputChange}
+                                name="orderDateTime"
+                                placeholder="Date and Time Orders Must Be Placed By"
+                            />
 
                             <TextArea
                                 value={this.state.message}
@@ -143,18 +138,18 @@ class Email extends Component {
                                     placeholder="From Name (Optional)"
                                 /></div>
                             <div className="row d-flex justify-content-end">
-                            <button type="submit" className="btn btn-primary">Confirm</button>
-                            <button
-                                className="btn btn-primary mx-3"
-                                disabled={!(this.state.sendToEmail)}
-                                onClick={this.handleFormSubmit}
-                            >
-                                Send
+                                <button type="submit" className="btn btn-primary">Confirm</button>
+                                <button
+                                    className="btn btn-primary mx-3"
+                                    disabled={!(this.state.sendToEmail)}
+                                    onClick={this.handleFormSubmit}
+                                >
+                                    Send
                             </button>
-                        </div>
+                            </div>
                         </form>
                     </Col>
-                   
+
                 </Row>
             </Container>
         );

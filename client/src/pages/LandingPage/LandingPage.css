@@ -3,6 +3,7 @@
     background-image: url(/assets/images/veggies.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    border: 2px solid  #fff;
     margin-top: 78px;
     margin-left: 58px;
     margin-right: 58px;
@@ -10,21 +11,23 @@
     padding-top: 50px;
     padding-bottom: 50px;
     min-height: 390px;
-    box-shadow: 5px 6px 4px rgba(0,0,0,.3);
+    box-shadow: 8px 8px 4px rgba(0,0,0,.3);
 }
 .landingPageMainText {
+    border: 2px solid  rgb(0,172,173);
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
+    border-radius: 10px;
 }
-
-
 #signUpButton {
     margin-top: 20px;
     max-width: 312px;
 }
 
+.btn-primary {
+    background-color: rgb(0,172,173);
+    border-color:  rgb(0,172,173);
+}
 body {
     background-image: url(/assets/images/grey_wash_wall.png);
-    
-
 }

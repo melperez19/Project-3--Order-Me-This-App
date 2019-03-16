@@ -20,8 +20,8 @@ class Home extends Component {
 
                 </Nav>
 
-                <Container>
-
+                <div className="container d-flex justify-content-center">
+                <div className="homeBackground justify-content-center">
                     <div className="host-id col text-center">
                         <p>Welcome, Username</p>
                         <p>Fill in the blanks to send your invitations.</p>
@@ -29,10 +29,11 @@ class Home extends Component {
                     <div className="letterArea p-3">
                         <Email />
                     </div>
+                </div>
                         
                     
                     
-                </Container>
+                </div>
             </div>
             </Slide>
         )
