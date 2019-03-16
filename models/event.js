@@ -6,6 +6,7 @@ const eventSchema = new Schema({
   sendToName: { type: String, required: true },
   sendToEmail: { type: String, required: true },
   restaurantName: { type: String, required: true },
+  link: { trype: String, required: true },
   eventDateTime: { type: String, required: true },
   orderDateTime: { type: String, required: true },
   message: String,
