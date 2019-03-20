@@ -16,5 +16,11 @@ export default {
   // Saves a event to the database
   saveEvent: function(eventData) {
     return axios.post("/api/event", eventData);
+  },
+  createNewOrder: function(emailId) {
+    return axios.post("/api/order/" + emailId);
+  },
+  updateOrder: function(emailId) {
+    return axios.put("/api/order/" + emailId);
   }
 };

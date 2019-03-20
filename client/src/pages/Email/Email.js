@@ -3,6 +3,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
+import API from "../../utils/API";
+
 
 class Email extends Component {
     state = {
@@ -14,7 +16,13 @@ class Email extends Component {
         sendToEmail: [],
         // sendToName: [],
         fromName: "",
-        message: ""
+        message: "",
+        name: "",
+        foodOrder: "",
+        specialRequest: "",
+        price: "",
+        date: "",
+        // eventID: ""
     };
 
     handleInputChange = event => {
@@ -40,6 +48,32 @@ class Email extends Component {
             this.state.fromName,
             this.state.message
         )
+        API.saveEvent({
+            eventName: this.state.eventName,
+            eventDateTime: this.state.eventDateTime,
+            orderDateTime: this.state.orderDateTime,
+            restaurantName: this.state.restaurantName,
+            restaurantMenuURL: this.state.restaurantMenuURL,
+            sendToEmail: this.state.sendToEmail,
+            // this.state.sendToName,
+            fromName: this.state.fromName,
+            message: this.state.message
+        })
+            .then(function(dbEvent) {
+                this.state.sendToEmail.map(email => (
+                    API.createNewOrder({
+                        key: dbEvent._id,
+                        name: this.state.email,
+                        foodOrder: "",
+                        specialRequest: "",
+                        price: "",
+                        date: ""
+                    })
+                ))
+            })
+          
+            .catch(err => console.log(err));
+        
 
         this.setState({
             formSubmitted: true
@@ -167,8 +201,8 @@ class Email extends Component {
                                 <button type="submit" className="btn btn-primary">Confirm</button>
                                 <button
                                     className="btn btn-primary mx-3"
-                                    disabled={!(this.state.sendToEmail && 
-                                        this.state.eventName && 
+                                    disabled={!(this.state.sendToEmail &&
+                                        this.state.eventName &&
                                         this.state.restaurantName &&
                                         this.state.eventDateTime &&
                                         this.state.orderDateTime)}

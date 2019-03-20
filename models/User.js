@@ -10,8 +10,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     default: '',
-    match:/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/,
-    minlength:5
+    match:[/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, 'Please fill a valid password']
   },
   isDeleted: {
     type: Boolean,
