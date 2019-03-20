@@ -9,7 +9,7 @@ class MyEvents extends Component {
     state = {
         eventById: []
     }
-   
+
     getEvent = (id) => {
         API.getEvent(id)
             .catch(err => console.log(err));
@@ -34,16 +34,34 @@ class MyEvents extends Component {
                                 {this.state.eventById.length ?
                                     this.state.eventbyId.map(event => (
                                         <CreatedEvents
-                                        key={event._id}
-                                        id={event._id}
-                                        deleteEvent={this.deleteEvent}
-                                        eventName={event.eventName}
-                                        eventDateTime={event.eventDateTime}
-                                        message={event.message}
-                                        orderDateTime={event.orderDateTime}
-                                        restaurantMenuURL={event.restaurantMenuURL}
-                                        restaurantName={event.restaurantName}
-                                        sendToEmail={event.sendToEmail}
+                                            key={event._id}
+                                            id={event._id}
+                                            deleteEvent={this.deleteEvent}
+                                            eventName={event.eventName}
+                                            eventDateTime={event.eventDateTime}
+                                            message={event.message}
+                                            orderDateTime={event.orderDateTime}
+                                            restaurantMenuURL={event.restaurantMenuURL}
+                                            restaurantName={event.restaurantName}
+                                            sendToEmail={event.sendToEmail}
+                                        />
+                                    )) : (
+                                        <h3>No Results to Display</h3>
+                                    )}
+                            </div>
+                            <div className="ordersArea p-3">
+                                <small>Fill in the blanks to make your order</small>
+
+                                {this.state.sendToEmails.length ?
+                                    this.state.sendToEmails.map(email => (
+                                        <CreatedEvents
+                                            key={email._id}
+                                            id={email._id}
+                                            name={email.name}
+                                            foodOrder={email.foodOrder}
+                                            specialRequest={email.specialRequest}
+                                            price={email.price}
+                                            date={email.date}
                                         />
                                     )) : (
                                         <h3>No Results to Display</h3>

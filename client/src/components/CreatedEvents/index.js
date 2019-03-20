@@ -6,7 +6,7 @@ function CreatedEvents({
     eventName,
     eventDateTime,
     id,
-    link,
+    restaurantMenuURL,
     message,
     orderDateTime,
     restaurantName,
@@ -24,7 +24,7 @@ function CreatedEvents({
                 </div>
                 <div className="view-save">
                     <a className="btn btn-outline-primary mx-2"
-                        role="button" href={link}
+                        role="button" href={restaurantMenuURL}
                         target="_blank" rel="noopener noreferrer">View</a>
                     <button
                         type="button"
