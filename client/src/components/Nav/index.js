@@ -18,8 +18,6 @@ class Nav extends Component {
   logout = () => {
     this.context.setUser({ anonymous: true })
     this.context.auth.logout();
-    console.log("happy puppies")
-    console.log(window.location);
     this.setState({
       isLoading: true,
     }, () => {
@@ -27,7 +25,7 @@ class Nav extends Component {
         .then(res => res.json())
         .then(json => {
           this.setState({ isLoading: false 
-          }, () => {window.location.replace("/")});
+          }, () => {window.location.replace("/home")});
         });
     });
   }
