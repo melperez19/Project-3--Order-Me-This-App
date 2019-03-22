@@ -3,7 +3,9 @@ import "./LandingPage.css";
 import Modal from "../../components/Modal";
 import Login from "../Login";
 import { Container } from "../../components/Grid";
-
+import {
+    Link
+} from "react-router-dom";
 
 
 class LandingPage extends Component {
@@ -21,6 +23,25 @@ class LandingPage extends Component {
         return (
 
             <Container>
+                
+                <nav className="navbar navbar-expand-lg bg-light fixed-top navbar-light mb-2">
+                    <Link className="navbar-brand" to="/">
+                        Order Me This
+                    </Link>
+                    <button
+                    onClick={this.toggleNav}
+                    className="navbar-toggler"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon" />
+                </button>
+                        
+                </nav>
+
                 <div className="landingPageBackground d-flex align-items-center justify-content-center">
                 
                     <div className="landingPageMainText">
@@ -37,7 +58,7 @@ class LandingPage extends Component {
                                     onClick={this.toggleModal}
                                     id="signUpButton"
                                     value="SignUp | LogIn"
-                                    className="btn btn-primary" />
+                                    className="btn btn-general" />
 
                                 <Modal
                                     show={this.state.show}

@@ -3,7 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-color: rgb(0,0,0,.3);
-    background-image: url(/assets/images/typewriter.jpg);
+    background-image: url(/assets/images/plantdesk.jpg);
     border: 2px solid #fff;
     -webkit-box-shadow: 
     inset 8px 8px 4px rgba(0,0,0,0.3),
@@ -53,7 +53,20 @@
     font-size: 1.5rem;
     color: #FFF;
     text-shadow: 1px 3px 6px rgba(0,0,0,.6);
-    background-color: rgba(0,172,173,0.9);
+    background-color: rgb(0,172,173);
     padding-bottom: 2px;
     padding-top: 20px;
+}
+.btn-general {
+      background-color: rgb(0,172,173);
+      border-color:  rgb(0,172,173);
+      color: #fff;
+}
+.btn-general:hover {
+      background-color: rgb(0,172,173);
+      border-color:  rgb(0,172,173);
+      color: #fff;
+}
+.btn-general:disabled {
+      opacity: .4;
 }

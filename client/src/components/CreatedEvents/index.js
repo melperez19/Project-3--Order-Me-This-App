@@ -23,12 +23,12 @@ function CreatedEvents({
                     <p>Invitation sent to: {sendToEmail}</p>
                 </div>
                 <div className="view-save">
-                    <a className="btn btn-outline-primary mx-2"
+                    <a className="btn btn-outline-general mx-2"
                         role="button" href={restaurantMenuURL}
-                        target="_blank" rel="noopener noreferrer">View</a>
+                        target="_blank" rel="noopener noreferrer">View Menu</a>
                     <button
                         type="button"
-                        className="btn btn-primary mx-2"
+                        className="btn btn-general mx-2"
                         onClick={() => deleteEvent(id)}>Delete</button>
                 </div>
             </div>

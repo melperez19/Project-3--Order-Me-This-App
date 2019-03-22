@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
+import { Link } from "react-router-dom";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
@@ -202,18 +203,19 @@ class Email extends Component {
                                     placeholder="From Name (Optional)"
                                 /></div>
                             <div className="row d-flex justify-content-end">
-                                <button type="submit"
-                                    className="btn btn-primary"
-                                    disabled={!(this.state.sendToEmail &&
-                                        this.state.eventName &&
-                                        this.state.restaurantName &&
-                                        this.state.eventDateTime &&
-                                        this.state.orderDateTime)}
-                                    onClick={this.handleFormSubmit}>
-                                    Confirm
-                                </button>
-                                {/* <button
-                                    className="btn btn-primary mx-3"
+                                <Link className="navbar-brand" to="/confirm">
+                                    <div type="submit"
+                                        className="btn btn-general"
+                                        disabled={!(this.state.sendToEmail &&
+                                            this.state.eventName &&
+                                            this.state.restaurantName &&
+                                            this.state.eventDateTime &&
+                                            this.state.orderDateTime)}
+                                        onClick={this.handleFormSubmit}>
+                                        Confirm</div>
+                                </Link>
+                                <button
+                                    className="btn btn-general mx-3"
                                     disabled={!(this.state.sendToEmail &&
                                         this.state.eventName &&
                                         this.state.restaurantName &&
@@ -221,7 +223,7 @@ class Email extends Component {
                                         this.state.orderDateTime)}
                                     onClick={this.handleFormSubmit}>
                                     Send
-                                </button> */}
+                                </button>
                             </div>
                         </form>
                     </Col>
