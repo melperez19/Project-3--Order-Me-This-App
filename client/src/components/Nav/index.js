@@ -3,13 +3,32 @@ import {
   Link
 } from "react-router-dom";
 import "./style.css";
-
+// import Login from "../../pages/Login";
+// import Logout from "../Logout";
+import ApplicationContext from '../../ApplicationContext';
 
 class Nav extends Component {
+  static contextType = ApplicationContext;
+
   state = {
     open: false,
     width: window.innerWidth
   };
+
+  logout = () => {
+    this.context.setUser({ anonymous: true })
+    this.context.auth.logout();
+    this.setState({
+      isLoading: true,
+    }, () => {
+      fetch('/api/account/logout')
+        .then(res => res.json())
+        .then(json => {
+          this.setState({ isLoading: false 
+          }, () => {window.location.replace("/home")});
+        });
+    });
+  }
 
   render() {
     return (
@@ -45,19 +64,25 @@ class Nav extends Component {
                 className={window.location.pathname === "/myEvents" ? "nav-link active" : "nav-link"}
                 to="/myEvents"
               >
-                My Events 
+                My Events
               </Link>
             </li>
-            <li className="nav-item">
-              <button className="btn btn-primary" onClick={this.logout}>Logout</button>
-            </li>
 
+            <li
+              onClick={this.logout}
+              className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+            >
+                Logout
+              {/* <Link */}
+              {/* // input type="button" */}
+              {/* </Link> */}
+            </li>
 
 
 
           </ul>
         </div>
-      </nav>
+      </nav >
     );
   }
 }

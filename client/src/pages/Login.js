@@ -29,10 +29,6 @@ class Login extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  state = {
-    isLoading: true,
-  }
-
   componentDidMount() {
     fetch('/api/account/verify')
       .then(res => res.json())
@@ -205,7 +201,7 @@ class Login extends Component {
                 />
               </div>
               <div className="col d-flex justify-content-end">
-                <button className="btn btn-primary" onClick={this.onSignIn}>Login</button>
+                <button className="btn btn-general" onClick={this.onSignIn}>Login</button>
               </div>
             </div>
           </div>
@@ -238,7 +234,7 @@ class Login extends Component {
                 />
               </div>
               <div className="col d-flex justify-content-end">
-                <button className="btn btn-primary" onClick={this.onSignUp}>Sign Up</button>
+                <button className="btn btn-general" onClick={this.onSignUp}>Sign Up</button>
               </div>
             </div>
           </div>
@@ -250,11 +246,11 @@ class Login extends Component {
      
       <div>
         
-        <button className="btn btn-primary" onClick={this.logout}>Logout</button>
-        <br />
+        {/* <button className="btn btn-general" onClick={this.logout}>Logout</button> */}
+        
 
         <Link className="navbar-brand" to="/home">
-          <div className="btn btn-primary">Take me to the Home Page</div>
+          <div className="btn btn-general">Take me to the Home Page</div>
         </Link>
         
       </div>

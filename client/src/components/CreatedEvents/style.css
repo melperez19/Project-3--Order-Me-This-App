@@ -1,0 +1,14 @@
+.btn-general {
+    background-color: rgb(0,172,173);
+    border-color:  rgb(0,172,173);
+    color: #fff;
+}
+.btn-general:hover{
+    background-color: rgb(0,172,173);
+    border-color:  rgb(0,172,173);
+    color: #fff;
+}
+.btn-outline-general {
+    background-color: #fff;
+    border: 2px solid rgb(0,172,173);
+}

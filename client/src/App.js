@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch/NoMatch";
-
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Event from "./pages/Event/Event";
 import MyEvents from "./pages/MyEvents/MyEvents";
-
 import Home from "./pages/Home/Home";
 import { ProtectedRoute } from "./utils/protectRoute";
 import auth from "./utils/auth";
@@ -51,6 +49,7 @@ export default class App extends Component {
       <ApplicationContext.Provider value={{
         setUser: this.setUser,
         user: this.state.user,
+        auth: auth
       }}>
         <Router>
           
