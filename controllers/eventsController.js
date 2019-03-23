@@ -9,6 +9,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findAllOrders: function(req, res) {
+    db.Order
+      .find({eventID: req.params.id})
+      .sort({ OrderDateTime: -1 })
+      .then(dbModels => res.json(dbModels))
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
     db.Event
       .findOne({_id: req.params.id})

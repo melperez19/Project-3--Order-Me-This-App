@@ -68,14 +68,14 @@ class Nav extends Component {
               </Link>
             </li>
 
-            <li
+            <li className="nav-item">
+              <Link
               onClick={this.logout}
               className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+              to="/"
             >
                 Logout
-              {/* <Link */}
-              {/* // input type="button" */}
-              {/* </Link> */}
+              </Link>
             </li>
 
 

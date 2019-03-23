@@ -19,6 +19,7 @@ class MyEvents extends Component {
     };
     deleteEvent = (id) => {
         API.deleteEvent(id)
+            .then(this.loadEvents)
             .catch(err => console.log(err));
     };
     render() {
@@ -37,17 +38,18 @@ class MyEvents extends Component {
                                 {this.state.events.length ?
                                     this.state.events.map(event => (
                                         <CreatedEvents
-                                        key={event._id}
-                                        id={event._id}
-                                        deleteEvent={this.deleteEvent}
-                                        eventName={event.eventName}
-                                        eventDateTime={event.eventDateTime}
-                                        message={event.message}
-                                        orderDateTime={event.orderDateTime}
-                                        restaurantMenuURL={event.restaurantMenuURL}
-                                        restaurantName={event.restaurantName}
-                                        sendToEmail={event.sendToEmail}
+                                            key={event._id}
+                                            id={event._id}
+                                            deleteEvent={this.deleteEvent}
+                                            eventName={event.eventName}
+                                            eventDateTime={event.eventDateTime}
+                                            message={event.message}
+                                            orderDateTime={event.orderDateTime}
+                                            restaurantMenuURL={event.restaurantMenuURL}
+                                            restaurantName={event.restaurantName}
+                                            sendToEmail={event.sendToEmail}
                                         />
+                                
                                     )) : (
                                         <h3>No Results to Display</h3>
                                     )}

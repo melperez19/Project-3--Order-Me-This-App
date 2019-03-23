@@ -7,8 +7,8 @@ const OrderSchema = new Schema({
   name:{ type: String, default: "" }, 
   foodOrder: { type: String, default: "" },
   specialRequest: { type: String, default: "" },
-  price:{ type: Number, default: 0 } 
-  // date: { type: String }
+  price:{ type: Number, default: 0 },
+  date: { type: String, default: "" }
 });
 
 const Order = mongoose.model("Order", OrderSchema);

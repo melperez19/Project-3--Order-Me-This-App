@@ -9,6 +9,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   findById: function(req, res) {
     db.Order
       .findOne({_id: req.params.id})

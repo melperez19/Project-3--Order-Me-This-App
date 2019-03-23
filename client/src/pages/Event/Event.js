@@ -2,41 +2,70 @@ import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Slide from 'react-reveal/Slide';
 import "./Event.css";
-import CreatedEvents from "../../components/CreatedEvents";
+import EventSummary from "../../components/EventSummary";
 import API from "../../utils/API";
 import Orders from "../../components/Orders";
 
 class MyEvents extends Component {
-    state = {
-        eventById: [],
-        sendToEmails: []
+    constructor(props) {
+        super(props)
+        this.state = {
+            eventById: {},
+            orders: []
+        }
     }
+
+    componentDidMount() {
+        this.getEvent(this.props.match.params.id);
+        this.findAllOrders(this.props.match.params.id);
+    };
 
     getEvent = (id) => {
         API.getEvent(id)
-            .then(res => this.setState({ eventById: res.data }))
-            .catch(err => console.log(err));
+            .then(res => this.setState({ eventById: res.data },
+                console.log(res.data)
+            ))
+            .catch(err => console.log(err))
     };
+
     deleteEvent = (id) => {
         API.deleteEvent(id)
             .catch(err => console.log(err));
     };
+
+    findAllOrders = (eventId) => {
+        API.findAllOrders(eventId)
+            .then(res => this.setState({ orders: res.data },
+                console.log("find all ", res.data)
+            ))
+            .catch(err => console.log(err));
+    };
+
+    updateOrder = (orderId, updatedOrder) => {
+        console.log(updatedOrder)
+        API.updateOrder(orderId, updatedOrder)
+            .then(res => this.findAllOrders(this.state.eventById._id))
+            .catch(err => console.log(err));
+    };
+
     render() {
+        let event = this.state.eventById;
+        let orders = this.state.orders;
         return (
             <Slide left>
                 <div>
                     <Nav />
                     <div className="container d-flex justify-content-center">
-                        <div className="eventsBackground justify-content-center">
-                            <div className="eventsTitle col text-center">
-                                <h1> My Events - All events made by Host </h1>
-                            </div>
-                            <div className="eventsArea p-3">
-                                <small>See event details and add your order.</small>
+                        <div className="eventBackground justify-content-center">
+                            <div className="eventBody">
+                                <div className="eventsTitle col text-center text-white">
+                                    <h1> Event Summary </h1>
+                                </div>
+                                <div className="eventArea p-3">
+                                    <h4>See event details and add your order below.</h4>
 
-                                {this.state.eventById.length ?
-                                    this.state.eventbyId.map(event => (
-                                        <CreatedEvents
+                                    {this.state.eventById ?
+                                        <EventSummary
                                             key={event._id}
                                             id={event._id}
                                             deleteEvent={this.deleteEvent}
@@ -48,27 +77,29 @@ class MyEvents extends Component {
                                             restaurantName={event.restaurantName}
                                             sendToEmail={event.sendToEmail}
                                         />
-                                    )) : (
-                                        <h3>No Results to Display</h3>
-                                    )}
-                            </div>
-                            <div className="ordersArea p-3">
-                                <small>Fill in the blanks to make your order</small>
+                                        : (
+                                            <h3>No Results to Display</h3>
+                                        )}
+                                </div>
+                                <div className="ordersArea p-3">
 
-                                {this.state.sendToEmails.length ?
-                                    this.state.sendToEmails.map(email => (
-                                        <Orders
-                                            key={email._id}
-                                            id={email._id}
-                                            name={email.name}
-                                            foodOrder={email.foodOrder}
-                                            specialRequest={email.specialRequest}
-                                            price={email.price}
-                                            date={email.date}
-                                        />
-                                    )) : (
-                                        <h3>No Results to Display</h3>
-                                    )}
+                                    {orders.length ?
+                                        orders.map(order => (
+                                            <Orders
+                                                key={order._id}
+                                                id={order._id}
+                                                email={order.email}
+                                                name={order.name}
+                                                foodOrder={order.foodOrder}
+                                                specialRequest={order.specialRequest}
+                                                price={order.price}
+                                                date={order.date}
+                                                updateOrder={this.updateOrder}
+                                            />
+                                        )) : (
+                                            <h3>No Results to Display</h3>
+                                        )}
+                                </div>
                             </div>
                         </div>
                     </div>

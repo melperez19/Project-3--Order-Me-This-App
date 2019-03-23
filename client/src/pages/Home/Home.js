@@ -4,8 +4,13 @@ import Email from "../Email/Email";
 import Nav from "../../components/Nav";
 import Slide from 'react-reveal/Slide';
 import "./Home.css";
+import ApplicationContext from "../../ApplicationContext";
 
 class Home extends Component {
+    static contextType = ApplicationContext;
+    state = {
+        user: this.context.user
+    }
 
     render() {
         return (
@@ -21,7 +26,7 @@ class Home extends Component {
                     <div className="container d-flex justify-content-center">
                         <div className="homeBackground">
                             <div className="homeTitle col text-center">
-                                <p>Welcome, Username</p>
+                                <p>Welcome, {this.state.user.email}</p>
                                 <p>Fill in the blanks to send your invitations.</p>
                             </div>
                             <div className="homeArea p-3">
