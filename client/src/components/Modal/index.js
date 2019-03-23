@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Pulse from 'react-reveal/Pulse';
+import Fade from 'react-reveal/Fade';
 
 export default class Modal extends React.Component {
 
@@ -8,19 +8,19 @@ export default class Modal extends React.Component {
         if (!this.props.show) {
             return null;
         }
-        
-            return (
-                <Pulse>
-                <div className="backdropStyle">
-                <div className="modalStyle">
-                    {this.props.children}
-                    <div className="footerStyle">
-                        
-                    </div>
-                </div>
 
-            </div>
-            </Pulse>
-            )
-        }
+        return (
+            <Fade>
+                <div className="backdropStyle">
+                    <div className="modalStyle">
+                        {this.props.children}
+                        <div className="footerStyle">
+
+                        </div>
+                    </div>
+
+                </div>
+            </Fade>
+        )
     }
+}

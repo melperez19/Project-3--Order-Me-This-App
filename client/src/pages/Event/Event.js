@@ -4,14 +4,17 @@ import Slide from 'react-reveal/Slide';
 import "./Event.css";
 import CreatedEvents from "../../components/CreatedEvents";
 import API from "../../utils/API";
+import Orders from "../../components/Orders";
 
 class MyEvents extends Component {
     state = {
-        eventById: []
+        eventById: [],
+        sendToEmails: []
     }
 
     getEvent = (id) => {
         API.getEvent(id)
+            .then(res => this.setState({ eventById: res.data }))
             .catch(err => console.log(err));
     };
     deleteEvent = (id) => {
@@ -29,7 +32,7 @@ class MyEvents extends Component {
                                 <h1> My Events - All events made by Host </h1>
                             </div>
                             <div className="eventsArea p-3">
-                                <small>Click on an event name to see the full details</small>
+                                <small>See event details and add your order.</small>
 
                                 {this.state.eventById.length ?
                                     this.state.eventbyId.map(event => (
@@ -54,7 +57,7 @@ class MyEvents extends Component {
 
                                 {this.state.sendToEmails.length ?
                                     this.state.sendToEmails.map(email => (
-                                        <CreatedEvents
+                                        <Orders
                                             key={email._id}
                                             id={email._id}
                                             name={email.name}

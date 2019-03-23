@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
+import { Link } from "react-router-dom";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
@@ -126,9 +127,9 @@ class Email extends Component {
                                 id="inputEmailInvite"
                                 placeholder="Restaurant Menu Link"
                             />
+                           <div className="flex-row d-flex mb-3>
+                             <div className="textFieldBorder">
                             <TextField
-                                // value={this.state.eventDateTime}
-                                className="datepickers"
                                 id="datetime-local"
                                 label="Date/Time of Event"
                                 type="datetime-local"
@@ -139,9 +140,9 @@ class Email extends Component {
                                     shrink: true,
                                 }}
                             />
+                                </div>
+                             <div className="textFieldBorder">
                             <TextField
-                                // value={this.state.orderDateTime}
-                                className="datepickers"
                                 id="datetime-local"
                                 label="Order Must Be Placed By"
                                 type="datetime-local"
@@ -152,7 +153,8 @@ class Email extends Component {
                                     shrink: true,
                                 }}
                             />
-
+                               </div>
+                            </div>
                             <TextArea
                                 value={this.state.message}
                                 onChange={this.handleInputChange}
@@ -169,18 +171,27 @@ class Email extends Component {
                                     placeholder="From Name (Optional)"
                                 /></div>
                             <div className="row d-flex justify-content-end">
-                                <button type="submit" className="btn btn-primary">Confirm</button>
+                                <Link className="navbar-brand" to="/confirm">
+                                    <div type="submit"
+                                        className="btn btn-general"
+                                        disabled={!(this.state.sendToEmail &&
+                                            this.state.eventName &&
+                                            this.state.restaurantName &&
+                                            this.state.eventDateTime &&
+                                            this.state.orderDateTime)}
+                                        onClick={this.handleFormSubmit}>
+                                        Confirm</div>
+                                </Link>
                                 <button
-                                    className="btn btn-primary mx-3"
+                                    className="btn btn-general mx-3"
                                     disabled={!(this.state.sendToEmail &&
                                         this.state.eventName &&
                                         this.state.restaurantName &&
                                         this.state.eventDateTime &&
                                         this.state.orderDateTime)}
-                                    onClick={this.handleFormSubmit}
-                                >
+                                    onClick={this.handleFormSubmit}>
                                     Send
-                            </button>
+                                </button>
                             </div>
                         </form>
                     </Col>
