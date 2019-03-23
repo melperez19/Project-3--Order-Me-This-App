@@ -17,10 +17,10 @@ export default {
   saveEvent: function(eventData) {
     return axios.post("/api/event", eventData);
   },
-  createNewOrder: function(emailId) {
-    return axios.post("/api/order/" + emailId);
+  createNewOrder: function(newOrders) {
+    return axios.post("/api/orders", {newOrders});
   },
   updateOrder: function(emailId) {
-    return axios.put("/api/order/" + emailId);
+    return axios.put("/api/orders" + emailId);
   }
 };

@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-  name:{ type: String, required: true }, 
-  foodOrder: { type: String, required: true },
-  specialRequest: { type: String, required: false },
-  price:{ type: Number, required: true }, 
-  date: { type: Date, default: Date.now }
-
+  eventID:{ type: String, required: true },
+  email:{ type: String, required: true  },
+  name:{ type: String, default: "" }, 
+  foodOrder: { type: String, default: "" },
+  specialRequest: { type: String, default: "" },
+  price:{ type: Number, default: 0 } 
+  // date: { type: String }
 });
 
 const Order = mongoose.model("Order", OrderSchema);

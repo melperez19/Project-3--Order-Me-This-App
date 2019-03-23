@@ -15,15 +15,8 @@ class Email extends Component {
         restaurantName: "",
         restaurantMenuURL: "",
         sendToEmail: [],
-        // sendToName: [],
         fromName: "",
         message: "",
-        name: "",
-        foodOrder: "",
-        specialRequest: "",
-        price: "",
-        date: "",
-        // eventID: ""
     };
 
     handleInputChange = event => {
@@ -45,43 +38,16 @@ class Email extends Component {
             this.state.restaurantName,
             this.state.restaurantMenuURL,
             this.state.sendToEmail,
-            // this.state.sendToName,
             this.state.fromName,
             this.state.message
         )
-        API.saveEvent({
-            eventName: this.state.eventName,
-            eventDateTime: this.state.eventDateTime,
-            orderDateTime: this.state.orderDateTime,
-            restaurantName: this.state.restaurantName,
-            restaurantMenuURL: this.state.restaurantMenuURL,
-            sendToEmail: this.state.sendToEmail,
-            // this.state.sendToName,
-            fromName: this.state.fromName,
-            message: this.state.message
-        })
-            .then(function (dbEvent) {
-                this.state.sendToEmail.map(email => (
-                    API.createNewOrder({
-                        key: dbEvent._id,
-                        name: this.state.email,
-                        foodOrder: "",
-                        specialRequest: "",
-                        price: "",
-                        date: ""
-                    })
-                ))
-            })
-
-            .catch(err => console.log(err));
-
-
         this.setState({
             formSubmitted: true
         })
     }
 
     sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message) {
+        
         var template_params = {
             event_name: eventName,
             event_date: eventDateTime,
@@ -92,7 +58,6 @@ class Email extends Component {
             from_name: fromName,
             // order_me_this_event_link: "https://powerful-journey-65247.herokuapp.com/",
             order_me_this_event_link: "http://localhost:3000/event",
-            // to_name: sendToName,
             message_html: message
         }
         window.emailjs.send(
@@ -100,16 +65,32 @@ class Email extends Component {
             template,
             template_params
         ).then(res => {
-            this.setState({ formEmailSent: true });
             alert("Sent!");
-            // this.setState({
-            //     sendToEmail: "",
-            //     sendToName: "",
-            //     fromName: "",
-            //     message: ""            
-            // })
-
-        }).catch(err => console.error('Failed to send email. Error: ', err))
+            API.saveEvent({
+                eventName: this.state.eventName,
+                eventDateTime: this.state.eventDateTime,
+                orderDateTime: this.state.orderDateTime,
+                restaurantName: this.state.restaurantName,
+                restaurantMenuURL: this.state.restaurantMenuURL,
+                sendToEmail: this.state.sendToEmail,
+                fromName: this.state.fromName,
+                message: this.state.message
+            })
+            .then(eventDb => {
+                console.log(eventDb);
+                let sendToEmail = eventDb.data.sendToEmail;
+                let emailArray = sendToEmail.split(",");
+                let newOrders = emailArray.map(email => {
+                    return {
+                        eventID: eventDb.data._id,
+                        email: email
+                    }
+                });
+                API.createNewOrder(newOrders).then(orderDb => this.setState({ formEmailSent: true }));
+                
+            })
+        })
+        .catch(err => console.error('Failed to send email. Error: ', err))
     }
 
     render() {
@@ -118,16 +99,6 @@ class Email extends Component {
                 <Row>
                     <Col size="12">
                         <form>
-                            {/* <div >
-                                <p className="emailLetterText">
-                                    Dear  <Input
-                                    value={this.state.sendToName}
-                                    onChange={this.handleInputChange}
-                                    name="sendToName"
-                                    placeholder="Send To Name (required)"
-                                /></p>
-                            </div> */}
-
                             <small>The title will be a reference in MyEvents and a link to this event.</small>
                             <Input
                                 value={this.state.eventName}
@@ -156,36 +127,33 @@ class Email extends Component {
                                 id="inputEmailInvite"
                                 placeholder="Restaurant Menu Link"
                             />
-                            <div className="flex-row d-flex mb-3">
-                                <div className="textFieldBorder">
-                                    <TextField
-                                        value={this.state.eventDateTime}
-                                        id="datetime-local"
-                                        label="Date/Time of Event"
-                                        type="datetime-local"
-                                        onChange={this.handleInputChange}
-                                        defaultValue={Date.now()}
-                                        name="eventDateTime"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                    />
+                           <div className="flex-row d-flex mb-3>
+                             <div className="textFieldBorder">
+                            <TextField
+                                id="datetime-local"
+                                label="Date/Time of Event"
+                                type="datetime-local"
+                                onChange={this.handleInputChange}
+                                value={this.state.eventDateTime ? this.state.eventDateTime : "2019-03-21T10:30"}
+                                name="eventDateTime"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
                                 </div>
-
-                                <div className="textFieldBorder">
-                                    <TextField
-                                        value={this.state.orderDateTime}
-                                        id="datetime-local"
-                                        label="Order Must Be Placed By"
-                                        type="datetime-local"
-                                        onChange={this.handleInputChange}
-                                        defaultValue={Date.now()}
-                                        name="orderDateTime"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                    />
-                                </div>
+                             <div className="textFieldBorder">
+                            <TextField
+                                id="datetime-local"
+                                label="Order Must Be Placed By"
+                                type="datetime-local"
+                                onChange={this.handleInputChange}
+                                value={this.state.orderDateTime ? this.state.orderDateTime : "2019-03-21T10:30"}
+                                name="orderDateTime"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                               </div>
                             </div>
                             <TextArea
                                 value={this.state.message}

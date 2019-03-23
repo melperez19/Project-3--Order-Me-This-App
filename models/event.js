@@ -6,17 +6,17 @@ const eventSchema = new Schema({
   // sendToName: { type: String, required: true },
   sendToEmail: { type: String, required: true },
   restaurantName: { type: String, required: true },
-  link: { type: String, required: true },
+  restaurantMenuURL: { type: String, required: true },
   eventDateTime: { type: String, required: true },
   orderDateTime: { type: String, required: true },
   message: String,
   fromName: String,
-  orders: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Order"
-    }
-  ]
+  // orders: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Order"
+  //   }
+  // ]
 });
 
 const Event = mongoose.model("Event", eventSchema);
