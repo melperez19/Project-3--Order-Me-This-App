@@ -20,7 +20,10 @@ export default {
   createNewOrder: function(newOrders) {
     return axios.post("/api/orders", {newOrders});
   },
-  updateOrder: function(emailId) {
-    return axios.put("/api/orders" + emailId);
+  updateOrder: function(orderId, updatedOrder) {
+    return axios.put("/api/orders/" + orderId, updatedOrder);
+  },
+  findAllOrders: function(eventId) {
+    return axios.get("/api/event/" + eventId + "/orders");
   }
 };

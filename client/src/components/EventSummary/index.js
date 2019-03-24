@@ -1,8 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function CreatedEvents({
-    deleteEvent,
+function EventSummary({
     eventName,
     eventDateTime,
     id,
@@ -13,7 +12,7 @@ function CreatedEvents({
     sendToEmail,
 }) {
     return (
-        <div className="mt-4 px-5">
+        <div className= "mt-4 px-5">
             <div className="row d-flex eventTitleInfo-and-buttons">
                 <div className={`flex-grow-1 event-${id}`}>
                     <p>Title: {eventName}</p>
@@ -26,10 +25,7 @@ function CreatedEvents({
                     <a className="btn btn-outline-general mx-2"
                         role="button" href={restaurantMenuURL}
                         target="_blank" rel="noopener noreferrer">View Menu</a>
-                    <button
-                        type="button"
-                        className="btn btn-general mx-2"
-                        onClick={() => deleteEvent(id)}>Delete</button>
+    
                 </div>
             </div>
             <div className="row d-flex summary">
@@ -42,4 +38,4 @@ function CreatedEvents({
 
     );
 }
-export default CreatedEvents;
+export default EventSummary;

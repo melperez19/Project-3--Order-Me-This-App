@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
+const moment = require('moment');
 
 
 class Email extends Component {
@@ -47,45 +48,46 @@ class Email extends Component {
     }
 
     sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message) {
-        
-        var template_params = {
-            event_name: eventName,
-            event_date: eventDateTime,
-            order_date: orderDateTime,
-            restaurant_name: restaurantName,
-            restaurant_menu_URL: restaurantMenuURL,
-            to_email: sendToEmail,
-            from_name: fromName,
-            // order_me_this_event_link: "https://powerful-journey-65247.herokuapp.com/",
-            order_me_this_event_link: "http://localhost:3000/event",
-            message_html: message
-        }
-        window.emailjs.send(
-            service_id,
-            template,
-            template_params
-        ).then(res => {
-            alert("Sent!");
-            API.saveEvent({
-                eventName: this.state.eventName,
-                eventDateTime: this.state.eventDateTime,
-                orderDateTime: this.state.orderDateTime,
-                restaurantName: this.state.restaurantName,
-                restaurantMenuURL: this.state.restaurantMenuURL,
-                sendToEmail: this.state.sendToEmail,
-                fromName: this.state.fromName,
-                message: this.state.message
-            })
-            .then(eventDb => {
-                console.log(eventDb);
-                let sendToEmail = eventDb.data.sendToEmail;
-                let emailArray = sendToEmail.split(",");
-                let newOrders = emailArray.map(email => {
-                    return {
-                        eventID: eventDb.data._id,
-                        email: email
-                    }
-                });
+        API.saveEvent({
+            eventName: this.state.eventName,
+            eventDateTime: this.state.eventDateTime,
+            orderDateTime: this.state.orderDateTime,
+            restaurantName: this.state.restaurantName,
+            restaurantMenuURL: this.state.restaurantMenuURL,
+            sendToEmail: this.state.sendToEmail,
+            fromName: this.state.fromName,
+            message: this.state.message
+        })
+        .then(eventDb => {
+            console.log(eventDb);
+            let sendToEmail = eventDb.data.sendToEmail;
+            let emailArray = sendToEmail.split(/[ ,]+/);
+            let newOrders = emailArray.map(email => {
+                return {
+                    eventID: eventDb.data._id,
+                    email: email,
+                    date: moment().format('MMMM Do YYYY, h:mm:ss a')
+                }
+            });
+            var template_params = {
+                event_name: eventName,
+                event_id: eventDb.data._id,
+                event_date: eventDateTime,
+                order_date: orderDateTime,
+                restaurant_name: restaurantName,
+                restaurant_menu_URL: restaurantMenuURL,
+                to_email: sendToEmail,
+                from_name: fromName,
+                // order_me_this_event_link: "https://powerful-journey-65247.herokuapp.com/",
+                order_me_this_event_link: "http://localhost:3000/event",
+                message_html: message
+            }
+            window.emailjs.send(
+                service_id,
+                template,
+                template_params
+            ).then(res => {
+                alert("Sent!");
                 API.createNewOrder(newOrders).then(orderDb => this.setState({ formEmailSent: true }));
                 
             })
@@ -127,7 +129,7 @@ class Email extends Component {
                                 id="inputEmailInvite"
                                 placeholder="Restaurant Menu Link"
                             />
-                           <div className="flex-row d-flex mb-3>
+                           <div className="flex-row d-flex mb-3">
                              <div className="textFieldBorder">
                             <TextField
                                 id="datetime-local"

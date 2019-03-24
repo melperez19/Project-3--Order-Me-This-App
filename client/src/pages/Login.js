@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import ApplicationContext from '../ApplicationContext';
 import 'whatwg-fetch';
 
@@ -252,6 +252,8 @@ class Login extends Component {
         <Link className="navbar-brand" to="/home">
           <div className="btn btn-general">Take me to the Home Page</div>
         </Link>
+
+
         
       </div>
     );
