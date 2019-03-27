@@ -78,8 +78,7 @@ class Email extends Component {
                 restaurant_menu_URL: restaurantMenuURL,
                 to_email: sendToEmail,
                 from_name: fromName,
-                order_me_this_event_link: "https://powerful-journey-65247.herokuapp.com/event",
-                // order_me_this_event_link: "http://localhost:3000/event",
+                order_me_this_event_link: `${window.location.protocol}//${window.location.host}/event`,
                 message_html: message
             }
             window.emailjs.send(
