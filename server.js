@@ -1,3 +1,4 @@
+const path = require("path");
 const cookieSession = require("cookie-session");
 const express = require("express");
 const mongoose = require("mongoose");
