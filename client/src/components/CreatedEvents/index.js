@@ -14,7 +14,7 @@ function CreatedEvents({
     message,
     orderDateTime,
     restaurantName,
-    sendToEmail,
+    sendToEmail
 }) {
     return (
         <div className="mt-4 px-5">
@@ -38,12 +38,14 @@ function CreatedEvents({
             </div>
             <div className="row d-flex summary">
                 <div className="col-9 event-summary">
-                    
+
                     <p>{message}</p>
+
                 </div>
             </div>
         </div>
 
     );
 }
+
 export default CreatedEvents;
