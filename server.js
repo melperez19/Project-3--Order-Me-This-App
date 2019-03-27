@@ -1,3 +1,4 @@
+const path = require("path");
 const cookieSession = require("cookie-session");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -13,13 +14,18 @@ app.use(cookieSession({
   keys: ['token'],
   name: 'session',
 }))
+
+// Add routes, both API and view
+app.use(routes);
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  })
   console.log("test");
 }
-// Add routes, both API and view
-app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/order_me_this_db");
