@@ -20,11 +20,11 @@ function CreatedEvents({
         <div className="mt-4 px-5">
             <div className="row d-flex eventTitleInfo-and-buttons">
                 <div className={`flex-grow-1 event-${id}`}>
-                    <p>Title: <Link to={`/event/${id}`}>{eventName}</Link></p>
-                    <p>Location: {restaurantName}</p>
-                    <p>Date of event: {eventDateTime}</p>
-                    <p>Order by (date and time): {orderDateTime}</p>
-                    <p>Invitation sent to: {sendToEmail}</p>
+                    <p>Title: <b><Link to={`/event/${id}`}>{eventName}</Link></b></p>
+                    <p>Location: <b>{restaurantName}</b></p>
+                    <p>Date of event: <b>{eventDateTime}</b></p>
+                    <p>Order by (date and time): <b>{orderDateTime}</b></p>
+                    <p>Invitation sent to: <b>{sendToEmail}</b></p>
                 </div>
                 <div className="view-save">
                     <a className="btn btn-outline-general mx-2"
@@ -39,7 +39,7 @@ function CreatedEvents({
             <div className="row d-flex summary">
                 <div className="col-9 event-summary">
                     
-                    <p>{message}</p>
+                    <p><b>{message}</b></p>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ module.exports = {
   },
   loadEventsByHost: function(req, res) {
     db.Event
-      .find({hostEmail: req.params.id})
+      .find({hostId: req.params.id})
       .sort({ eventDateTime: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

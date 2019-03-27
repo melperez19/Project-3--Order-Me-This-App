@@ -6,9 +6,10 @@ export default {
     return axios.get("/api/event/");
   },
   loadEventsByHost: function (hostEmail) {
-    return axios.get("/api/event/" + hostEmail)
+    return axios.get("/api/user/" + hostEmail + "/event")
   },
   // Gets the event with the given id
+  // /api/user/:id/event
   getEvent: function(id) {
     return axios.get("/api/event/" + id);
   },
