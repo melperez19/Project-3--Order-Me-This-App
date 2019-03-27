@@ -1,0 +1,31 @@
+.MDBFooter {
+    border: white;
+}
+
+.mdb-color {
+    color: black;
+}
+
+.font-weight-bold {
+    color: teal;
+    text-shadow:  2px 2px black;
+}
+
+i, .repo {
+    color: black;
+    /* text-shadow:  2px 2px teal; */
+}
+.mx-auto {
+    color: white;
+}
+
+.grey-text {
+    color: white;
+}
+
+em {
+    color: black;
+    text-shadow:  2px 2px teal;
+}
+
+

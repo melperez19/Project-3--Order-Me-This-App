@@ -9,6 +9,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  loadEventsByHost: function(req, res) {
+    db.Event
+      .find({hostEmail: req.params.id})
+      .sort({ eventDateTime: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findAllOrders: function(req, res) {
     db.Order
       .find({eventID: req.params.id})

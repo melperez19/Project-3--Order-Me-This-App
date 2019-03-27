@@ -4,19 +4,30 @@ import Slide from 'react-reveal/Slide';
 import "./MyEvents.css";
 import CreatedEvents from "../../components/CreatedEvents";
 import API from "../../utils/API";
+import ApplicationContext from "../../ApplicationContext";
+
 
 class MyEvents extends Component {
+    static contextType = ApplicationContext;
     state = {
-        events: []
+        events: [],
+        user: this.context.user
     }
     componentDidMount() {
-        this.loadEvents();
+        this.loadEventsByHost(this.state.user.email);
     }
-    loadEvents = () => {
-        API.loadEvents()
+    loadEventsByHost = (hostEmail) => {
+        console.log(hostEmail);
+        API.loadEventsByHost(hostEmail)
             .then(res => this.setState({ events: res.data }))
             .catch(err => console.log(err));
     };
+    // loadEvents = (hostEmail) => {
+    //     console.log(hostEmail);
+    //     API.loadEvents(hostEmail)
+    //         .then(res => this.setState({ events: res.data }))
+    //         .catch(err => console.log(err));
+    // };
     deleteEvent = (id) => {
         API.deleteEvent(id)
             .then(this.loadEvents)

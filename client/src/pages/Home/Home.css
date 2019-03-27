@@ -18,17 +18,15 @@
 }
 .homeArea {
     border: 2px solid rgb(0,172,173);
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    
+    border-radius: 5px;
     background-color: #fff;
     -webkit-box-shadow: 
-    inset 8px 8px 4px rgba(0,0,0,0.3),
-          8px 8px 4px rgba(0,0,0,0.3); 
+    inset 8px 0px 4px rgba(0,0,0,0.3),
+          8px 0px 4px rgba(0,0,0,0.3); 
     -moz-box-shadow: 
-    inset 8px 8px 4px rgba(0,0,0,0.3),
-          8px 8px 4px rgba(0,0,0,0.3);
-    box-shadow: 8px 8px 4px rgba(0,0,0,.3);
+    inset 8px 0px 4px rgba(0,0,0,0.3),
+          8px 0px 4px rgba(0,0,0,0.3);
+    box-shadow: 8px 0px 4px rgba(0,0,0,.3);
     
 }
 .form-group, .textFieldBorder {
@@ -46,9 +44,6 @@
       width: 257px;
 }
 .homeTitle{
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    
     font-family: 'Laila', 'serif';
     font-size: 1.5rem;
     color: #FFF;

@@ -1,3 +1,4 @@
+import ApplicationContext from "../../ApplicationContext";
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
@@ -9,6 +10,7 @@ const moment = require('moment');
 
 
 class Email extends Component {
+    static contextType = ApplicationContext;
     state = {
         eventName: "",
         eventDateTime: "",
@@ -18,8 +20,9 @@ class Email extends Component {
         sendToEmail: [],
         fromName: "",
         message: "",
+        user: this.context.user
     };
-
+   
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -40,16 +43,19 @@ class Email extends Component {
             this.state.restaurantMenuURL,
             this.state.sendToEmail,
             this.state.fromName,
-            this.state.message
+            this.state.message,
+            this.state.user.email
         )
         this.setState({
             formSubmitted: true
         })
     }
 
-    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message) {
+    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message, hostEmail) {
+        console.log(hostEmail);
         API.saveEvent({
             eventName: this.state.eventName,
+            hostEmail: hostEmail,
             eventDateTime: this.state.eventDateTime,
             orderDateTime: this.state.orderDateTime,
             restaurantName: this.state.restaurantName,

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventName: { type: String, required: true },
-  // sendToName: { type: String, required: true },
+  hostEmail: { type: String, required: true },
   sendToEmail: { type: String, required: true },
   restaurantName: { type: String, required: true },
   restaurantMenuURL: { type: String, required: true },
@@ -11,12 +11,6 @@ const eventSchema = new Schema({
   orderDateTime: { type: String, required: true },
   message: String,
   fromName: String,
-  // orders: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Order"
-  //   }
-  // ]
 });
 
 const Event = mongoose.model("Event", eventSchema);
