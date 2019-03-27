@@ -6,7 +6,7 @@ import EventSummary from "../../components/EventSummary";
 import API from "../../utils/API";
 import Orders from "../../components/Orders";
 
-class MyEvents extends Component {
+class Event extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -26,11 +26,6 @@ class MyEvents extends Component {
                 console.log(res.data)
             ))
             .catch(err => console.log(err))
-    };
-
-    deleteEvent = (id) => {
-        API.deleteEvent(id)
-            .catch(err => console.log(err));
     };
 
     findAllOrders = (eventId) => {
@@ -71,7 +66,6 @@ class MyEvents extends Component {
                                         <EventSummary
                                             key={event._id}
                                             id={event._id}
-                                            deleteEvent={this.deleteEvent}
                                             eventName={event.eventName}
                                             eventDateTime={event.eventDateTime}
                                             message={event.message}
@@ -112,4 +106,4 @@ class MyEvents extends Component {
         )
     }
 }
-export default MyEvents;
+export default Event;

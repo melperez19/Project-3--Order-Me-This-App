@@ -25,12 +25,14 @@ class Home extends Component {
 
                     <div className="container d-flex justify-content-center">
                         <div className="homeBackground">
-                            <div className="homeTitle col text-center">
-                                <p>Welcome, {this.state.user.email}</p>
-                                <p>Fill in the blanks to send your invitations.</p>
-                            </div>
-                            <div className="homeArea p-3">
-                                <Email />
+                            <div className="homeArea">
+                                <div className="homeTitle col text-center">
+                                    <p>Welcome, {this.state.user.email}</p>
+                                    <p>Fill in the blanks to send your invitations.</p>
+                                </div>
+                                <div className="p-3">
+                                    <Email />
+                                </div>
                             </div>
                         </div>
                     </div>

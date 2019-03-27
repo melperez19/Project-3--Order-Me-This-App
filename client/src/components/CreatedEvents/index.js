@@ -1,5 +1,9 @@
 import React from "react";
 import "./style.css";
+// import { Link } from 'react-router';
+import {
+    Link
+} from "react-router-dom";
 
 function CreatedEvents({
     deleteEvent,
@@ -16,7 +20,7 @@ function CreatedEvents({
         <div className="mt-4 px-5">
             <div className="row d-flex eventTitleInfo-and-buttons">
                 <div className={`flex-grow-1 event-${id}`}>
-                    <p>Title: {eventName}</p>
+                    <p>Title: <Link to={`/event/${id}`}>{eventName}</Link></p>
                     <p>Location: {restaurantName}</p>
                     <p>Date of event: {eventDateTime}</p>
                     <p>Order by (date and time): {orderDateTime}</p>

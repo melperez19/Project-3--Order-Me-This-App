@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
 import Modal from "../../components/Modal";
+import Footer from "../../components/Footer";
 import Login from "../Login";
 import { Container } from "../../components/Grid";
 import {
@@ -73,6 +74,7 @@ class LandingPage extends Component {
                     
 
                 </div>
+                <Footer/>
             </Container>  
                 
         )
