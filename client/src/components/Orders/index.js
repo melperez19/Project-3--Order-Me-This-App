@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import { Input } from "../../components/Form";
+const moment = require('moment');
 
 class Orders extends Component {
     constructor(props) {
@@ -24,12 +25,17 @@ class Orders extends Component {
             name: this.state.name,
             foodOrder: this.state.foodOrder,
             specialRequest: this.state.specialRequest,
-            price: this.state.price
-        };
+            price: this.state.price,
+            date: moment().format('MMMM Do YYYY, h:mm:ss a')        };
         this.props.updateOrder(this.props.id, updatedOrder)
     }
+    
     render() {
         const {
+            name,
+            foodOrder,
+            specialRequest,
+            price,
             email,
             date
         } = this.props
@@ -41,7 +47,7 @@ class Orders extends Component {
                 <div className="row flex-column">
                     <p>My Email: {email}</p>
                     <div className="d-flex align-items-center">
-                        <p className="mr-3">My Name: </p>
+                        <p className="mr-3">My Name: <b>{name}</b></p>
                         <Input
                             value={this.state.name}
                             onChange={this.handleInputChange}
@@ -50,7 +56,7 @@ class Orders extends Component {
                         />
                     </div>
                     <div className="d-flex align-items-center">
-                        <p className="mr-3">What I want:</p>
+                        <p className="mr-3">What I want: <b>{foodOrder}</b></p>
                         <Input
                             value={this.state.foodOrder}
                             onChange={this.handleInputChange}
@@ -59,7 +65,7 @@ class Orders extends Component {
                         />
                     </div>
                     <div className="d-flex align-items-center">
-                        <p className="mr-3">Special Requests: </p>
+                        <p className="mr-3">Special Requests: <b>{specialRequest}</b></p>
                         <Input
                             value={this.state.specialRequest}
                             onChange={this.handleInputChange}
@@ -67,9 +73,9 @@ class Orders extends Component {
                             placeholder="Enter any special needs"
                         />
                     </div>
-                    <p>Order by (date and time): {date}</p>
+                    <p>Date and Time of Last Change: <b>{date}</b></p>
                     <div className="d-flex align-items-center">
-                        <p className="mr-3">The price + tax: </p>
+                        <p className="mr-3">The price + tax: <b>{price}</b></p>
                         <Input
                             value={this.state.price}
                             onChange={this.handleInputChange}
@@ -82,7 +88,7 @@ class Orders extends Component {
                     <button
                         type="button"
                         className="btn btn-primary mx-2"
-                        onClick={this.handleFormSubmit}>Submit</button>
+                        onClick={this.handleFormSubmit}>Update Order</button>
                 </div>
             </div>
             </div>

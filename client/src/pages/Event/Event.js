@@ -45,6 +45,9 @@ class MyEvents extends Component {
         console.log(updatedOrder)
         API.updateOrder(orderId, updatedOrder)
             .then(res => this.findAllOrders(this.state.eventById._id))
+            // .then(res => this.setState({ orders: res.data },
+            //     console.log("find all ", res.data)
+            // ))
             .catch(err => console.log(err));
     };
 
