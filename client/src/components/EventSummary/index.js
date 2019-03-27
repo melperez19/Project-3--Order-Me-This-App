@@ -10,19 +10,19 @@ class EventSummary extends Component {
         super(props);
 
         this.state = {
-            orders: [],
+            
             columnDefs: [
                 { headerName: "Name", field: "name" },
                 { headerName: "Email", field: "email" },
-                { headerName: "Order", field: "order" },
+                { headerName: "Order", field: "foodOrder" },
                 { headerName: "Special Request", field: "specialRequest" },
                 { headerName: "Price", field: "price" }
 
             ],
             rowData: [
-                // {name: "Dan", email: "dan@email.com", order: "Orange Chicken", specialRequest: "spicy", price: 4.45},
-                // {name: "Kieran", email: "kieran@gmail.com", order: "Sweet & Sour Chicken", specialRequest: "not spicy", price: 5.49},
-                // {name: "Melissa", email: "melissa@email.com", order: "Broccoli Beef", specialRequest: "extra sauce", price: 7.25}
+                {name: {name}, email: {email}, order: {order}, specialRequest: {specialRequest}, price: {price}},
+                {name: "Kieran", email: "kieran@gmail.com", order: "Sweet & Sour Chicken", specialRequest: "not spicy", price: 5.49},
+                {name: "Melissa", email: "melissa@email.com", order: "Broccoli Beef", specialRequest: "extra sauce", price: 7.25}
             ]
         }
 
@@ -36,9 +36,9 @@ class EventSummary extends Component {
             .catch(err => console.log(err));
     };
 
-    componentDidMount() {
-        this.findAllOrders(this.props.match.params.id);
-    }
+    // componentDidMount() {
+    //     this.findAllOrders(this.props.match.params.id);
+    // }
     render() {
         const {
             eventName,
