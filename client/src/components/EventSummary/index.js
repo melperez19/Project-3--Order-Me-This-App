@@ -19,19 +19,15 @@ class EventSummary extends Component {
                 { headerName: "Price", field: "price" }
 
             ],
-            rowData: [
-                {name: {name}, email: {email}, order: {order}, specialRequest: {specialRequest}, price: {price}},
-                {name: "Kieran", email: "kieran@gmail.com", order: "Sweet & Sour Chicken", specialRequest: "not spicy", price: 5.49},
-                {name: "Melissa", email: "melissa@email.com", order: "Broccoli Beef", specialRequest: "extra sauce", price: 7.25}
-            ]
+            rowData: []
         }
 
     }
 
     findAllOrders = (eventId) => {
         API.findAllOrders(eventId)
-            .then(rowData => this.setState({ rowData },
-                console.log("find all ", rowData)
+            .then(res => this.setState({ rowData: res.data },
+                console.log("find all ", res.data)
                 ))
             .catch(err => console.log(err));
     };

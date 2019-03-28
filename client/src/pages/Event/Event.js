@@ -27,11 +27,6 @@ class Event extends Component {
             ))
             .catch(err => console.log(err))
     };
-
-<<<<<<< HEAD
-=======
-
->>>>>>> experimenting with Ag-Grid
     findAllOrders = (eventId) => {
         API.findAllOrders(eventId)
             .then(res => this.setState({ orders: res.data },
