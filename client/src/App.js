@@ -73,7 +73,7 @@ export default class App extends Component {
               <Route exact path="/" component={LandingPage} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/event/:id" component={Event} />
-              <Route exact path="/myEvents" component={MyEvents} />
+              <Route exact path="/myEvents/:id" component={MyEvents} />
               <Route component={NoMatch} />
             </Switch>
 

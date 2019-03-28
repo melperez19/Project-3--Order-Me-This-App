@@ -29,6 +29,7 @@ class Event extends Component {
     };
 
     findAllOrders = (eventId) => {
+        console.log(eventId);
         API.findAllOrders(eventId)
             .then(res => this.setState({ orders: res.data },
                 console.log("find all ", res.data)
@@ -37,9 +38,9 @@ class Event extends Component {
     };
 
     updateOrder = (orderId, updatedOrder) => {
-        console.log(updatedOrder)
+        console.log(this.state.eventById)
         API.updateOrder(orderId, updatedOrder)
-            .then(res => this.findAllOrders(this.state.eventById._id))
+            .then(res => this.findAllOrders(this.props.match.params.id))
             // .then(res => this.setState({ orders: res.data },
             //     console.log("find all ", res.data)
             // ))
@@ -49,6 +50,7 @@ class Event extends Component {
     render() {
         let event = this.state.eventById;
         let orders = this.state.orders;
+        console.log(this.state.eventById)
         return (
             <Slide left>
                 <div>

@@ -12,7 +12,8 @@ class Nav extends Component {
 
   state = {
     open: false,
-    width: window.innerWidth
+    width: window.innerWidth,
+    user: this.context.user
   };
 
   logout = () => {
@@ -31,6 +32,8 @@ class Nav extends Component {
   }
 
   render() {
+    const hostId = this.state.user._id;
+    console.log(hostId);
     return (
       <nav className="navbar navbar-expand-lg bg-light fixed-top navbar-light mb-2">
         <Link className="navbar-brand" to="/">
@@ -62,7 +65,7 @@ class Nav extends Component {
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/myEvents" ? "nav-link active" : "nav-link"}
-                to="/myEvents"
+                to={`/myEvents/${hostId}`}
               >
                 My Events
               </Link>

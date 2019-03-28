@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventName: { type: String, required: true },
-  hostEmail: { type: String, required: true },
+  hostId: { type: String, required: true },
   sendToEmail: { type: String, required: true },
   restaurantName: { type: String, required: true },
   restaurantMenuURL: { type: String, required: true },

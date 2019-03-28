@@ -14,7 +14,7 @@ router
 // Matches with "/api/events/:id"
 router
   .route("/:id")
-  .get(eventsController.loadEventsByHost)
+  .get(eventsController.findById)
   .put(eventsController.update)
   .delete(eventsController.remove);
 

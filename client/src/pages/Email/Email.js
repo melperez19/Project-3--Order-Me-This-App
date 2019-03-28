@@ -44,18 +44,18 @@ class Email extends Component {
             this.state.sendToEmail,
             this.state.fromName,
             this.state.message,
-            this.state.user.email
+            this.state.user._id
         )
         this.setState({
             formSubmitted: true
         })
     }
 
-    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message, hostEmail) {
-        console.log(hostEmail);
+    sendEmail(service_id, template, eventName, eventDateTime, orderDateTime, restaurantName, restaurantMenuURL, sendToEmail, fromName, message, hostId) {
+        console.log(hostId);
         API.saveEvent({
             eventName: this.state.eventName,
-            hostEmail: hostEmail,
+            hostId: hostId,
             eventDateTime: this.state.eventDateTime,
             orderDateTime: this.state.orderDateTime,
             restaurantName: this.state.restaurantName,
