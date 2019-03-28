@@ -39,13 +39,14 @@ class Orders extends Component {
             email,
             date
         } = this.props
+        console.log(foodOrder)
         return (
         <div className="orders">
             <h4 className="mr-3 mt-3">Fill in the blanks to make your order</h4>
             <div className="results-area mt-1 p-5">
             
                 <div className="row flex-column">
-                    <p>My Email: {email}</p>
+                    <p>My Email: <b>{email}</b></p>
                     <div className="d-flex align-items-center">
                         <p className="mr-3">My Name: <b>{name}</b></p>
                         <Input
