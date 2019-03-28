@@ -38,14 +38,8 @@ function CreatedEvents({
             </div>
             <div className="row d-flex summary">
                 <div className="col-9 event-summary">
-<<<<<<< HEAD
-
-                    <p>{message}</p>
-
-=======
                     
                     <p><b>{message}</b></p>
->>>>>>> c30305cc5753cbee36b9fc36e8fc36d19c615f04
                 </div>
             </div>
         </div>
