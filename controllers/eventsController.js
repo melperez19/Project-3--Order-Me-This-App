@@ -10,6 +10,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   loadEventsByHost: function(req, res) {
+    console.log("host id: ", req.params.id)
     db.Event
       .find({hostId: req.params.id})
       .sort({ eventDateTime: -1 })

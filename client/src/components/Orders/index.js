@@ -21,8 +21,9 @@ class Orders extends Component {
     };
     handleFormSubmit = event => {
         event.preventDefault();
+        let userName = this.state.name ? this.state.name : this.props.name;
         let updatedOrder = {
-            name: this.state.name,
+            name: userName,
             foodOrder: this.state.foodOrder,
             specialRequest: this.state.specialRequest,
             price: this.state.price,
@@ -39,7 +40,7 @@ class Orders extends Component {
             email,
             date
         } = this.props
-        console.log(foodOrder)
+        
         return (
         <div className="orders">
             <h4 className="mr-3 mt-3">Fill in the blanks to make your order</h4>
