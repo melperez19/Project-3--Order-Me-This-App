@@ -38,3 +38,8 @@ Brought to you by Team Members --- [Dan Solomon](https://github.com/DanRSolomon)
 * **Material-UI** - Interactive date/time picker to create an event
 
 * **MomentJS** - Formats the date and time of the created event
+
+#### Future Features Include
+* Add the specific agGrid print ready functionality for the Order Summary table
+* Add another Logout button on the landing page as well
+* Update the placeholder texts to be more usuable for other types of orders (office supplies, maintanance work, grocery runs, etc.)

@@ -92,22 +92,23 @@ class Orders extends Component {
                             </div>
                         </div>
                     </div>
-                    <p>Saved as: Name: <strong>{name}</strong>, 
-                                Order: <strong>{foodOrder}</strong>, 
-                                Price: <strong>{price}</strong>, 
+                    <p>Saved as: Name: <strong>{name}</strong>,
+                                Order: <strong>{foodOrder}</strong>,
+                                Price: <strong>{price}</strong>,
                                 Special Requests: <strong>{specialRequest}</strong>
                     </p>
-                </div>
-                <div className="col-12">
-                    <p>Date and Time of Last Change: <b>{date}</b></p>
-                </div>
+                    <div className="update-button">
+                        <button
+                            type="button"
+                            className="btn btn-primary mx-2"
+                            onClick={this.handleFormSubmit}>Update Order
+                        </button>
+                    </div>
+                    <div className="col-12">
+                        <p>Date and Time of Last Change: <b>{date}</b></p>
+                    </div>
 
-                <div className="update-button">
-                    <button
-                        type="button"
-                        className="btn btn-primary mx-2"
-                        onClick={this.handleFormSubmit}>Update Order
-                </button>
+
                 </div>
             </div>
         );

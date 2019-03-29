@@ -180,7 +180,7 @@ class Login extends Component {
           <div>
             {signInError && <p>{signInError}</p>}
             <div className="row">
-              <p>Sign In To Start Ordering!</p>
+              <p>Log In To Start Ordering!</p>
               </div>
               <div className="row">
               <div className="col d-flex flex-column justify-content-center">

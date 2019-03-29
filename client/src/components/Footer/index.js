@@ -58,7 +58,7 @@ return (
         <MDBRow className="d-flex align-items-center">
           <MDBCol md="12" lg="12">
             <p className="text-center text-md-left grey-text">
-              &copy; {new Date().getFullYear()} Copyright:{" "}
+              &copy; {new Date().getFullYear()} Copyright {" "}
               <a href="https://github.com/melperez19/Project-3--Order-Me-This-App"> <b><em>Order Me This</em></b></a>
             </p>
           </MDBCol>

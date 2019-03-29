@@ -2,7 +2,7 @@ import ApplicationContext from "../../ApplicationContext";
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
@@ -178,7 +178,7 @@ class Email extends Component {
                                     placeholder="From Name (Optional)"
                                 /></div>
                             <div className="row d-flex justify-content-end">
-                                <Link className="navbar-brand" to="/confirm">
+                                {/* <Link className="navbar-brand" to="/confirm">
                                     <div type="submit"
                                         className="btn btn-general"
                                         disabled={!(this.state.sendToEmail &&
@@ -188,7 +188,7 @@ class Email extends Component {
                                             this.state.orderDateTime)}
                                         onClick={this.handleFormSubmit}>
                                         Confirm</div>
-                                </Link>
+                                </Link> */}
                                 <button
                                     className="btn btn-general mx-3"
                                     disabled={!(this.state.sendToEmail &&
