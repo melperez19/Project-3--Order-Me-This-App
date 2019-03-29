@@ -4,16 +4,18 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
-const columnDefs = [
-    { headerName: "Name", field: "name" },
-    { headerName: "Email", field: "email" },
-    { headerName: "Order", field: "foodOrder" },
-    { headerName: "Special Request", field: "specialRequest" },
-    { headerName: "Price", field: "price" }
-]
+const columnDefs =
+    [
+        { headerName: "Name", field: "name"},
+        { headerName: "Email", field: "email"},
+        { headerName: "Order", field: "foodOrder"},
+        { headerName: "Price", field: "price"},
+        { headerName: "Special Request", field: "specialRequest"}
+    ]
+
 
 function EventSummary(props) {
-
+    
     const {
         eventName,
         eventDateTime,
@@ -28,27 +30,29 @@ function EventSummary(props) {
 
     return (
         <div className="mt-4 px-5">
-            <div className="row d-flex eventTitleInfo-and-buttons">
-                <div className={`flex-grow-1 event-${id}`}>
-                    <p>Title: {eventName}</p>
-                    <p>Location: {restaurantName}</p>
-                    <p>Date of event: {eventDateTime}</p>
-                    <p>Order by (date and time): {orderDateTime}</p>
-                    <p>Invitation sent to: {sendToEmail}</p>
+            <div className="row">
+                <div className={`col-9 event-${id} event-summary` }>
+                    <p>Title: <strong>{eventName}</strong></p>
+                    <p>Location: <strong>{restaurantName}</strong></p>
+                    <p>Date of event: <strong>{eventDateTime}</strong></p>
+                    <p>Order by (date and time): <strong>{orderDateTime}</strong></p>
                 </div>
-                <div className="view-save">
+                <div className="col-1 view-menu-button">
                     <a className="btn btn-outline-general mx-2"
                         role="button" href={restaurantMenuURL}
                         target="_blank" rel="noopener noreferrer">View Menu</a>
                 </div>
+                <div className="col-12">
+                <p>Invitation(s) sent to: <strong>{sendToEmail}</strong></p>
+                    <p>Message included(optional): <strong>{message}</strong></p>
+                </div>
             </div>
-            <div className="row d-flex summary">
-                <div className="col-9 event-summary">
-
-                    <p>{message}</p>
+            <div className="row d-flex">
+                <div className="col-12 order-summary">
+                <p><small>Summary of orders are below. Columns can be dragged by order of importance to you.</small></p>
                     <div
-                        className="ag-theme-balham"
-                        style={{ height: '200px', width: '600px' }}
+                        className="ag-theme-balham "
+                        style={{ height: '200px'}}
                     >
                         <AgGridReact
                             columnDefs={columnDefs}
@@ -61,4 +65,5 @@ function EventSummary(props) {
 
     );
 }
+
 export default EventSummary;
