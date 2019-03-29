@@ -142,7 +142,7 @@ class Email extends Component {
                                 label="Date/Time of Event"
                                 type="datetime-local"
                                 onChange={this.handleInputChange}
-                                value={this.state.eventDateTime ? this.state.eventDateTime : "2019-03-21T10:30"}
+                                value={this.state.eventDateTime ? this.state.eventDateTime : ""}
                                 name="eventDateTime"
                                 InputLabelProps={{
                                     shrink: true,
@@ -155,7 +155,7 @@ class Email extends Component {
                                 label="Order Must Be Placed By"
                                 type="datetime-local"
                                 onChange={this.handleInputChange}
-                                value={this.state.orderDateTime ? this.state.orderDateTime : "2019-03-21T10:30"}
+                                value={this.state.orderDateTime ? this.state.orderDateTime : ""}
                                 name="orderDateTime"
                                 InputLabelProps={{
                                     shrink: true,
