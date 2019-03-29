@@ -27,12 +27,11 @@ class Event extends Component {
             ))
             .catch(err => console.log(err))
     };
-
     findAllOrders = (eventId) => {
         console.log(eventId);
         API.findAllOrders(eventId)
             .then(res => this.setState({ orders: res.data },
-                console.log("find all ", res.data)
+                console.log("event page ", res.data)
             ))
             .catch(err => console.log(err));
     };
@@ -75,6 +74,7 @@ class Event extends Component {
                                             restaurantMenuURL={event.restaurantMenuURL}
                                             restaurantName={event.restaurantName}
                                             sendToEmail={event.sendToEmail}
+                                            orders={orders}
                                         />
                                         : (
                                             <h3>No Results to Display</h3>

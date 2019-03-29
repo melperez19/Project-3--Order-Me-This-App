@@ -32,8 +32,8 @@ class Nav extends Component {
   }
 
   render() {
-    const hostId = this.state.user._id;
-    console.log(hostId);
+    const hostId = this.context.user._id;
+
     return (
       <nav className="navbar navbar-expand-lg bg-light fixed-top navbar-light mb-2">
         <Link className="navbar-brand" to="/">

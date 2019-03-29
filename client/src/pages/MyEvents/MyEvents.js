@@ -11,17 +11,17 @@ class MyEvents extends Component {
         events: []
     }
     componentDidMount() {
+        console.log(this.props.match.params.id);
         this.loadEventsByHost(this.props.match.params.id);
-    }
+    };
     loadEventsByHost = (hostEmail) => {
-        console.log(hostEmail);
         API.loadEventsByHost(hostEmail)
-            .then(res => this.setState({ events: res.data }))
+            .then(res =>this.setState({ events: res.data }))
             .catch(err => console.log(err));
     };
     deleteEvent = (id) => {
         API.deleteEvent(id)
-            .then(this.loadEvents)
+            .then(this.loadEventsByHost)
             .catch(err => console.log(err));
     };
     render() {

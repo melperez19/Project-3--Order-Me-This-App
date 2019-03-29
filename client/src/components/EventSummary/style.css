@@ -12,3 +12,8 @@
     background-color: #fff;
     border: 2px solid rgb(0,172,173);
 }
+
+.event-summary {
+    font-family: 'Laila', 'Times New Roman', Times, serif;
+    font-weight: 400;
+}

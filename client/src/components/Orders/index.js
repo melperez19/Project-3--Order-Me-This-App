@@ -21,15 +21,20 @@ class Orders extends Component {
     };
     handleFormSubmit = event => {
         event.preventDefault();
+        let userName = this.state.name ? this.state.name : this.props.name;
+        let orderRequest = this.state.foodOrder ? this.state.foodOrder : this.props.foodOrder;
+        let special = this.state.specialRequest ? this.state.specialRequest : this.props.specialRequest;
+        let pricing = this.state.price ? this.state.price : this.props.price;
         let updatedOrder = {
-            name: this.state.name,
-            foodOrder: this.state.foodOrder,
-            specialRequest: this.state.specialRequest,
-            price: this.state.price,
-            date: moment().format('MMMM Do YYYY, h:mm:ss a')        };
+            name: userName,
+            foodOrder: orderRequest,
+            specialRequest: special,
+            price: pricing,
+            date: moment().format('MMMM Do YYYY, h:mm:ss a')
+        };
         this.props.updateOrder(this.props.id, updatedOrder)
     }
-    
+
     render() {
         const {
             name,
@@ -39,59 +44,71 @@ class Orders extends Component {
             email,
             date
         } = this.props
-        console.log(foodOrder)
+
         return (
-        <div className="orders">
-            <h4 className="mr-3 mt-3">Fill in the blanks to make your order</h4>
-            <div className="results-area mt-1 p-5">
-            
-                <div className="row flex-column">
-                    <p>My Email: <b>{email}</b></p>
-                    <div className="d-flex align-items-center">
-                        <p className="mr-3">My Name: <b>{name}</b></p>
-                        <Input
-                            value={this.state.name}
-                            onChange={this.handleInputChange}
-                            name="name"
-                            placeholder="Enter your name"
-                        />
+            <div className="orders">
+                <h4 className="mr-3 mt-3">Fill in the blanks to make your order</h4>
+                <div className="results-area mt-1 p-5">
+
+                    <div className="row">
+                        <div className="col-12">
+                            <p>My Email: <b>{email}</b></p>
+                        </div>
+
+                        <div className="col-6">
+                            <div>
+                                <Input
+                                    value={this.state.name}
+                                    onChange={this.handleInputChange}
+                                    name="name"
+                                    placeholder="Enter your name"
+                                />
+                            </div>
+                            <div>
+                                <Input
+                                    value={this.state.foodOrder}
+                                    onChange={this.handleInputChange}
+                                    name="foodOrder"
+                                    placeholder="Enter your order"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div>
+                                <Input
+                                    value={this.state.specialRequest}
+                                    onChange={this.handleInputChange}
+                                    name="specialRequest"
+                                    placeholder="Enter any special needs"
+                                />
+                            </div>
+                            <div>
+                                <Input
+                                    value={this.state.price}
+                                    onChange={this.handleInputChange}
+                                    name="price"
+                                    placeholder="Enter the price + tax"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="d-flex align-items-center">
-                        <p className="mr-3">What I want: <b>{foodOrder}</b></p>
-                        <Input
-                            value={this.state.foodOrder}
-                            onChange={this.handleInputChange}
-                            name="foodOrder"
-                            placeholder="Enter your order"
-                        />
-                    </div>
-                    <div className="d-flex align-items-center">
-                        <p className="mr-3">Special Requests: <b>{specialRequest}</b></p>
-                        <Input
-                            value={this.state.specialRequest}
-                            onChange={this.handleInputChange}
-                            name="specialRequest"
-                            placeholder="Enter any special needs"
-                        />
-                    </div>
-                    <p>Date and Time of Last Change: <b>{date}</b></p>
-                    <div className="d-flex align-items-center">
-                        <p className="mr-3">The price + tax: <b>{price}</b></p>
-                        <Input
-                            value={this.state.price}
-                            onChange={this.handleInputChange}
-                            name="price"
-                            placeholder="Enter the price + tax"
-                        />
-                    </div>
+                    <p>Saved as: Name: <strong>{name}</strong>, 
+                                Order: <strong>{foodOrder}</strong>, 
+                                Price: <strong>{price}</strong>, 
+                                Special Requests: <strong>{specialRequest}</strong>
+                    </p>
                 </div>
-                <div className="view-save">
+                <div className="col-12">
+                    <p>Date and Time of Last Change: <b>{date}</b></p>
+                </div>
+
+                <div className="update-button">
                     <button
                         type="button"
                         className="btn btn-primary mx-2"
-                        onClick={this.handleFormSubmit}>Update Order</button>
+                        onClick={this.handleFormSubmit}>Update Order
+                </button>
                 </div>
-            </div>
             </div>
         );
     }

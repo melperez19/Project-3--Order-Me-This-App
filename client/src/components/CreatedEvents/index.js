@@ -14,7 +14,7 @@ function CreatedEvents({
     message,
     orderDateTime,
     restaurantName,
-    sendToEmail,
+    sendToEmail
 }) {
     return (
         <div className="mt-4 px-5">
@@ -46,4 +46,5 @@ function CreatedEvents({
 
     );
 }
+
 export default CreatedEvents;
