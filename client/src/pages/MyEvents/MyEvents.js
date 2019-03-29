@@ -32,7 +32,7 @@ class MyEvents extends Component {
                     <div className="container d-flex justify-content-center">
                         <div className="myEventsBackground justify-content-center">
                             <div className="myEventsTitle col text-center">
-                                <h1> My Events - All events made by Host </h1>
+                                <h1> All My Events </h1>
                             </div>
                             <div className="myEventsArea p-3">
                                 <small>Click on an event name to see the full details</small>
