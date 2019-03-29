@@ -2,7 +2,6 @@ import ApplicationContext from "../../ApplicationContext";
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
-// import { Link } from "react-router-dom";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
@@ -106,7 +105,7 @@ class Email extends Component {
                 <Row>
                     <Col size="12">
                         <form>
-                            <small>The title will be a reference in MyEvents and a link to this event.</small>
+                            <small>This will be a clickable link for you to find.</small>
                             <Input
                                 value={this.state.eventName}
                                 onChange={this.handleInputChange}
@@ -134,6 +133,8 @@ class Email extends Component {
                                 id="inputEmailInvite"
                                 placeholder="Restaurant Menu Link"
                             />
+                           <small>Hover and click the arrow to choose a calendar date. Enter a time. 
+                               Invitation needs a date and time to send.</small>
                            <div className="flex-row d-flex mb-3">
                              <div className="textFieldBorder">
                             <TextField

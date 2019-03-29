@@ -79,7 +79,7 @@ class Orders extends Component {
                                     value={this.state.specialRequest}
                                     onChange={this.handleInputChange}
                                     name="specialRequest"
-                                    placeholder="Enter any special needs"
+                                    placeholder="Enter any special requests"
                                 />
                             </div>
                             <div>
@@ -104,12 +104,13 @@ class Orders extends Component {
                             onClick={this.handleFormSubmit}>Update Order
                         </button>
                     </div>
-                    <div className="col-12">
-                        <p>Date and Time of Last Change: <b>{date}</b></p>
-                    </div>
+                    
 
 
                 </div>
+                <div className="col-12">
+                        <p>Date and Time of Last Change: <b>{date}</b></p>
+                    </div>
             </div>
         );
     }
