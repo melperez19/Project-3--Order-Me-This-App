@@ -26,6 +26,13 @@ An order form is provided to create an event and invite others to participate vi
 ![email](client/public/assets/images/receivedEmailPage.png) 
 They will be directed to the Order page for the specified event to check out a link to the menu or business, and fill out their item(s) of choice, price, and special requests.
 ![eventSummary](client/public/assets/images/eventSummaryPage.png) 
+3. The newly created event is then added to the user's saved list of events.
+![myEvents-image](client/public/assets/images/myEventsPage.png) 
+
+4. Participants receive the invitation. 
+![email](client/public/assets/images/receivedEmailPage.png) 
+They will be directed to the Order page for the specified event to check out a link to the menu or business, and fill out their item(s) of choice, price, and special requests.
+![eventSummary](client/public/assets/images/eventSummaryPage.png) 
 
 5. Once the time alloted for orders to be added comes to a close, the user is able to print out the details and finalize purchases. (This feature is currently a work in progress.)
 
