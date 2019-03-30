@@ -5,6 +5,7 @@ import { Input, TextArea } from "../../components/Form";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
 import API from "../../utils/API";
+import { Redirect } from 'react-router-dom';
 const moment = require('moment');
 
 
@@ -19,9 +20,10 @@ class Email extends Component {
         sendToEmail: [],
         fromName: "",
         message: "",
-        user: this.context.user
+        user: this.context.user,
+        formEmailSent: false
     };
-   
+
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -63,123 +65,126 @@ class Email extends Component {
             fromName: this.state.fromName,
             message: this.state.message
         })
-        .then(eventDb => {
-            console.log(eventDb);
-            let sendToEmail = eventDb.data.sendToEmail;
-            let emailArray = sendToEmail.split(/[ ,]+/);
-            let newOrders = emailArray.map(email => {
-                return {
-                    eventID: eventDb.data._id,
-                    email: email,
-                    date: moment().format('MMMM Do YYYY, h:mm:ss a')
+            .then(eventDb => {
+                console.log(eventDb);
+                let sendToEmail = eventDb.data.sendToEmail;
+                let emailArray = sendToEmail.split(/[ ,]+/);
+                let newOrders = emailArray.map(email => {
+                    return {
+                        eventID: eventDb.data._id,
+                        email: email,
+                        date: moment().format('MMMM Do YYYY, h:mm:ss a')
+                    }
+                });
+                var template_params = {
+                    event_name: eventName,
+                    event_id: eventDb.data._id,
+                    event_date: eventDateTime,
+                    order_date: orderDateTime,
+                    restaurant_name: restaurantName,
+                    restaurant_menu_URL: restaurantMenuURL,
+                    to_email: sendToEmail,
+                    from_name: fromName,
+                    order_me_this_event_link: `${window.location.protocol}//${window.location.host}/event`,
+                    message_html: message
                 }
-            });
-            var template_params = {
-                event_name: eventName,
-                event_id: eventDb.data._id,
-                event_date: eventDateTime,
-                order_date: orderDateTime,
-                restaurant_name: restaurantName,
-                restaurant_menu_URL: restaurantMenuURL,
-                to_email: sendToEmail,
-                from_name: fromName,
-                order_me_this_event_link: `${window.location.protocol}//${window.location.host}/event`,
-                message_html: message
-            }
-            window.emailjs.send(
-                service_id,
-                template,
-                template_params
-            ).then(res => {
-                alert("Sent!");
-                API.createNewOrder(newOrders).then(orderDb => this.setState({ formEmailSent: true }));
-                
+                window.emailjs.send(
+                    service_id,
+                    template,
+                    template_params
+                ).then(res => {
+                    alert("Sent!");
+                    API.createNewOrder(newOrders).then(orderDb => this.setState({ formEmailSent: true }));
+
+                })
             })
-        })
-        .catch(err => console.error('Failed to send email. Error: ', err))
+            .catch(err => alert('Failed to send email. Error: ', err))
     }
 
     render() {
-        return (
-            <Container fluid>
-                <Row>
-                    <Col size="12">
-                        <form>
-                            <small>This will be a clickable link for you to find.</small>
-                            <Input
-                                value={this.state.eventName}
-                                onChange={this.handleInputChange}
-                                name="eventName"
-                                placeholder="Event Name"
-                            />
-                            <small>Separate emails by a comma (ex. Joe@gmail.com, Mandy@email.com).</small>
-                            <TextArea
-                                value={this.state.sendToEmail}
-                                onChange={this.handleInputChange}
-                                name="sendToEmail"
-                                placeholder="Send To Email (required)"
-                            />
-                            <small>Fill out some details for the invitations.</small>
-                            <Input
-                                value={this.state.restaurantName}
-                                onChange={this.handleInputChange}
-                                name="restaurantName"
-                                placeholder="Name of Restaurant"
-                            />
-                            <Input
-                                value={this.state.restaurantMenuURL}
-                                onChange={this.handleInputChange}
-                                name="restaurantMenuURL"
-                                id="inputEmailInvite"
-                                placeholder="Restaurant Menu Link"
-                            />
-                           <small>Hover and click the arrow to choose a calendar date. Enter a time. 
-                               Invitation needs a date and time to send.</small>
-                           <div className="flex-row d-flex mb-3">
-                             <div className="textFieldBorder">
-                            <TextField
-                                id="datetime-local"
-                                label="Date/Time of Event"
-                                type="datetime-local"
-                                onChange={this.handleInputChange}
-                                value={this.state.eventDateTime ? this.state.eventDateTime : ""}
-                                name="eventDateTime"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                                </div>
-                             <div className="textFieldBorder">
-                            <TextField
-                                id="datetime-local"
-                                label="Order Must Be Placed By"
-                                type="datetime-local"
-                                onChange={this.handleInputChange}
-                                value={this.state.orderDateTime ? this.state.orderDateTime : ""}
-                                name="orderDateTime"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                               </div>
-                            </div>
-                            <TextArea
-                                value={this.state.message}
-                                onChange={this.handleInputChange}
-                                name="message"
-                                placeholder="Email Message(Optional)"
-                            />
-                            <div className="d-flex align-items-center">
-                                <p className="emailLetterText">
-                                    From </p>
+        if (this.state.formEmailSent) {
+            return <Redirect to={`/myEvents/${this.state.user._id}`} />;
+        } else {
+            return (
+                <Container fluid>
+                    <Row>
+                        <Col size="12">
+                            <form>
+                                <small>This will be a clickable link for you to find.</small>
                                 <Input
-                                    value={this.state.fromName}
+                                    value={this.state.eventName}
                                     onChange={this.handleInputChange}
-                                    name="fromName"
-                                    placeholder="From Name (Optional)"
-                                /></div>
-                            <div className="row d-flex justify-content-end">
-                                {/* <Link className="navbar-brand" to="/confirm">
+                                    name="eventName"
+                                    placeholder="Event Name"
+                                />
+                                <small>Separate emails by a comma (ex. Joe@gmail.com, Mandy@email.com).</small>
+                                <TextArea
+                                    value={this.state.sendToEmail}
+                                    onChange={this.handleInputChange}
+                                    name="sendToEmail"
+                                    placeholder="Send To Email (required)"
+                                />
+                                <small>Fill out some details for the invitations.</small>
+                                <Input
+                                    value={this.state.restaurantName}
+                                    onChange={this.handleInputChange}
+                                    name="restaurantName"
+                                    placeholder="Name of Restaurant"
+                                />
+                                <Input
+                                    value={this.state.restaurantMenuURL}
+                                    onChange={this.handleInputChange}
+                                    name="restaurantMenuURL"
+                                    id="inputEmailInvite"
+                                    placeholder="Restaurant Menu Link"
+                                />
+                                <small>Hover and click the arrow to choose a calendar date. Enter a time.
+                               Invitation needs a date and time to send.</small>
+                                <div className="flex-row d-flex mb-3">
+                                    <div className="textFieldBorder">
+                                        <TextField
+                                            id="datetime-local"
+                                            label="Date/Time of Event"
+                                            type="datetime-local"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.eventDateTime ? this.state.eventDateTime : ""}
+                                            name="eventDateTime"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="textFieldBorder">
+                                        <TextField
+                                            id="datetime-local"
+                                            label="Order Must Be Placed By"
+                                            type="datetime-local"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.orderDateTime ? this.state.orderDateTime : ""}
+                                            name="orderDateTime"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <TextArea
+                                    value={this.state.message}
+                                    onChange={this.handleInputChange}
+                                    name="message"
+                                    placeholder="Email Message(Optional)"
+                                />
+                                <div className="d-flex align-items-center">
+                                    <p className="emailLetterText">
+                                        From </p>
+                                    <Input
+                                        value={this.state.fromName}
+                                        onChange={this.handleInputChange}
+                                        name="fromName"
+                                        placeholder="From Name (Optional)"
+                                    /></div>
+                                <div className="row d-flex justify-content-end">
+                                    {/* <Link className="navbar-brand" to="/confirm">
                                     <div type="submit"
                                         className="btn btn-general"
                                         disabled={!(this.state.sendToEmail &&
@@ -190,23 +195,25 @@ class Email extends Component {
                                         onClick={this.handleFormSubmit}>
                                         Confirm</div>
                                 </Link> */}
-                                <button
-                                    className="btn btn-general mx-3"
-                                    disabled={!(this.state.sendToEmail &&
-                                        this.state.eventName &&
-                                        this.state.restaurantName &&
-                                        this.state.eventDateTime &&
-                                        this.state.orderDateTime)}
-                                    onClick={this.handleFormSubmit}>
-                                    Send
+                                    <button
+                                        className="btn btn-general mx-3"
+                                        disabled={!(this.state.sendToEmail &&
+                                            this.state.eventName &&
+                                            this.state.restaurantName &&
+                                            this.state.eventDateTime &&
+                                            this.state.orderDateTime)}
+                                        onClick={this.handleFormSubmit}>
+                                        Send
                                 </button>
-                            </div>
-                        </form>
-                    </Col>
 
-                </Row>
-            </Container>
-        );
+                                </div>
+                            </form>
+                        </Col>
+
+                    </Row>
+                </Container>
+            )
+        };
     }
 }
 
