@@ -21,7 +21,7 @@ class MyEvents extends Component {
     };
     deleteEvent = (id) => {
         API.deleteEvent(id)
-            .then(this.loadEventsByHost)
+            .then(res => this.loadEventsByHost(this.props.match.params.id))
             .catch(err => console.log(err));
     };
     render() {
