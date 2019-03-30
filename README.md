@@ -4,7 +4,7 @@ Ever struggle to organize a lunch order at the workplace? Taking too much time t
 
 Well, end the struggle by utilizing this new ordering application! _Order Me This_ makes organizing group orders easy. Already there are plenty of applications for creating lunch runs, but _Order Me This_ organizes all types of group orders, from potlucks to office supplies.
 
-![landingPage-image](https://github.com/melperez19/Project-3--Order-Me-This-App/blob/master/client/public/assets/images/ordermethisFront.png) 
+![landingPage-image](client/public/assets/images/landingPage.png) 
 
 Brought to you by Team Members --- [Dan Solomon](https://github.com/DanRSolomon), [Kieran McDougall](https://github.com/LopTwo), [Jennifer Alejos](https://github.com/alejosjen), and [Melissa Perez](https://github.com/melperez19)
 
@@ -14,11 +14,18 @@ Brought to you by Team Members --- [Dan Solomon](https://github.com/DanRSolomon)
 
 1. When first arriving to our site, new users will be prompted to Sign Up and Log in to create an account for hosting events. 
 
-2. Once signed in, the user is directed to the Home page and greeted with a welcome message. An order form is provided to create an event and invite others to participate via email.
+2. Once signed in, the user is directed to the Home page and greeted with a welcome message. 
+![homePage](client/public/assets/images/homePage.png) 
+An order form is provided to create an event and invite others to participate via email.
+
 
 3. The newly created event is then added to the user's saved list of events.
+![myEvents-image](client/public/assets/images/myEventsPage.png) 
 
-4. Once participants receive the invitation, they will be directed to the Order page for the specified event to check out a link to the menu or business, and fill out their item(s) of choice, price, and special requests.
+4. Participants receive the invitation. 
+![email](client/public/assets/images/receivedEmailPage.png) 
+They will be directed to the Order page for the specified event to check out a link to the menu or business, and fill out their item(s) of choice, price, and special requests.
+![eventSummary](client/public/assets/images/eventSummaryPage.png) 
 
 5. Once the time alloted for orders to be added comes to a close, the user is able to print out the details and finalize purchases. (This feature is currently a work in progress.)
 

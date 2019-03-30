@@ -140,41 +140,41 @@ class Email extends Component {
                                 />
                                 <small>Hover and click the arrow to choose a calendar date. Enter a time.
                                Invitation needs a date and time to send.</small>
-                                <div className="flex-row d-flex mb-3">
-                                    <div className="textFieldBorder">
-                                        <TextField
-                                            id="datetime-local"
-                                            label="Date/Time of Event"
-                                            type="datetime-local"
-                                            onChange={this.handleInputChange}
-                                            value={this.state.eventDateTime ? this.state.eventDateTime : ""}
-                                            name="eventDateTime"
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="textFieldBorder">
-                                        <TextField
-                                            id="datetime-local"
-                                            label="Order Must Be Placed By"
-                                            type="datetime-local"
-                                            onChange={this.handleInputChange}
-                                            value={this.state.orderDateTime ? this.state.orderDateTime : ""}
-                                            name="orderDateTime"
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                        />
-                                    </div>
+                           <div className="flex-row d-flex mb-3">
+                             <div className="textFieldBorder">
+                            <TextField
+                                id="datetime-local"
+                                label="Date/Time of Event"
+                                type="datetime-local"
+                                onChange={this.handleInputChange}
+                                value={this.state.eventDateTime ? this.state.eventDateTime : ""}
+                                name="eventDateTime"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
                                 </div>
-                                <TextArea
-                                    value={this.state.message}
-                                    onChange={this.handleInputChange}
-                                    name="message"
-                                    placeholder="Email Message(Optional)"
-                                />
-                                <div className="d-flex align-items-center">
+                             <div className="textFieldBorder">
+                            <TextField
+                                id="datetime-local"
+                                label="Order Must Be Placed By"
+                                type="datetime-local"
+                                onChange={this.handleInputChange}
+                                value={this.state.orderDateTime ? this.state.orderDateTime : ""}
+                                name="orderDateTime"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                               </div>
+                            </div>
+                            <TextArea
+                                value={this.state.message}
+                                onChange={this.handleInputChange}
+                                name="message"
+                                placeholder="Email Message(Optional)"
+                            />
+                            <div className="d-flex align-items-center">
                                     <p className="emailLetterText">
                                         From </p>
                                     <Input
