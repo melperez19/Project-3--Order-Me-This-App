@@ -14,11 +14,10 @@
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
     padding: 50px;
     margin-bottom: 50px;
-    min-height: 390px;
 }
-.eventBody {
+/* .eventBody {
     min-width: 700px;
-}
+} */
 .eventArea {
     border: 2px solid rgb(0,172,173);
     border-top-right-radius: 5px;
