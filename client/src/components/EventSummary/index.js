@@ -31,16 +31,17 @@ function EventSummary(props) {
     return (
         <div className="mt-4 px-5">
             <div className="row">
-                <div className={`col-9 event-${id} event-summary` }>
+                <div className={`col event-${id} event-summary` }>
                     <p>Title: <strong>{eventName}</strong></p>
                     <p>Location: <strong>{restaurantName}</strong></p>
                     <p>Date of event: <strong>{eventDateTime}</strong></p>
                     <p>Order by (date and time): <strong>{orderDateTime}</strong></p>
                 </div>
-                <div className="col-1 view-menu-button">
+                <div className="col">
                     <a className="btn btn-outline-general mx-2"
                         role="button" href={restaurantMenuURL}
-                        target="_blank" rel="noopener noreferrer">View Menu</a>
+                        target="_blank" rel="noopener noreferrer">View Menu
+                    </a>
                 </div>
                 <div className="col-12">
                 <p>Invitation(s) sent to: <strong>{sendToEmail}</strong></p>

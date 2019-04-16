@@ -52,11 +52,12 @@ class Orders extends Component {
 
                     <div className="row">
                         <div className="col-12">
-                            <p>My Email: <b>{email}</b></p>
+                            <p>Your Email: <b>{email}</b></p>
                         </div>
 
                         <div className="col-6">
                             <div>
+                            <p>Your name</p>
                                 <Input
                                     value={this.state.name}
                                     onChange={this.handleInputChange}
@@ -65,6 +66,7 @@ class Orders extends Component {
                                 />
                             </div>
                             <div>
+                                <p>Your order</p>
                                 <Input
                                     value={this.state.foodOrder}
                                     onChange={this.handleInputChange}
@@ -75,6 +77,7 @@ class Orders extends Component {
                         </div>
                         <div className="col-6">
                             <div>
+                                <p>Special requests</p>
                                 <Input
                                     value={this.state.specialRequest}
                                     onChange={this.handleInputChange}
@@ -83,6 +86,7 @@ class Orders extends Component {
                                 />
                             </div>
                             <div>
+                                <p>Price + tax</p>
                                 <Input
                                     value={this.state.price}
                                     onChange={this.handleInputChange}

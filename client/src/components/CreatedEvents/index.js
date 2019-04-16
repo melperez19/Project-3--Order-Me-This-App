@@ -24,7 +24,7 @@ function CreatedEvents({
                     <p>Date of event: <strong>{eventDateTime}</strong></p>
                     <p>Order by (date and time): <strong>{orderDateTime}</strong></p>
                     <p>Invitation(s) sent to: <strong>{sendToEmail}</strong></p>
-                    <p>Message/Instructions (optional)<strong>{message}</strong></p>
+                    <p>Message/Instructions <em>(optional)</em>: <strong>{message}</strong></p>
                 </div>
                 <div className="view-save">
                     <a className="btn btn-outline-general mx-2"

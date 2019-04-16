@@ -4,7 +4,7 @@ import "./style.css";
 
 const Footer = () => {
 
-return (
+return ( 
     <MDBFooter color="mdb-color" className="font-small pt-4 mt-4">
       <MDBContainer className="text-center text-md-left">
         <MDBRow className="text-center text-md-left mt-3 pb-3">
@@ -59,7 +59,7 @@ return (
           <MDBCol md="12" lg="12">
             <p className="text-center text-md-left grey-text">
               &copy; {new Date().getFullYear()} Copyright {" "}
-              <a href="https://github.com/melperez19/Project-3--Order-Me-This-App"> <b><em>Order Me This</em></b></a>
+              <a href="https://github.com/melperez19/Project-3--Order-Me-This-App" className="title"> <b><em>Order Me This</em></b></a>
             </p>
           </MDBCol>
         
