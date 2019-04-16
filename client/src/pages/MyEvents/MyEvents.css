@@ -12,9 +12,10 @@
     inset 8px 8px 4px rgba(0,0,0,0.3),
           8px 8px 4px rgba(0,0,0,0.3);
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
-    padding: 50px;
-    margin-bottom: 50px;
-    min-height: 390px;
+    padding: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    /* min-height: 390px; */
 }
 
 .myEventsArea {
@@ -30,19 +31,9 @@
     inset 8px 8px 4px rgba(0,0,0,0.3),
           8px 8px 4px rgba(0,0,0,0.3);
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
-    
+    width: 100%;
 }
-.form-group {
-    border: 2px solid rgba(0,172,173, .6);
-    border-radius: 7px;
-    -webkit-box-shadow: 
-    inset 1px 1px 3px rgba(0,0,0,0.3),
-          1px 1px 3px rgba(0,0,0,0.3); 
-    -moz-box-shadow: 
-    inset 1px 1px 3px rgba(0,0,0,0.3),
-          1px 1px 3px rgba(0,0,0,0.3);
-    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
-}
+
 .myEventsTitle {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;

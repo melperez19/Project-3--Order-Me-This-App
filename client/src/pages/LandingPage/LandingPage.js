@@ -41,7 +41,7 @@ class LandingPage extends Component {
                 </nav>
 
                 <div className="landingPageBackground d-flex align-items-center justify-content-center">
-                    <div className="landingPageMainText">
+                    <div className="landingPageMainText mx-3">
                         <div className="col">
                             <div className="landingPageTitle">
                                 <h1 className="text-center">Order Me This</h1>

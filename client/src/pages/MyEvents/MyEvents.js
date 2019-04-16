@@ -26,9 +26,10 @@ class MyEvents extends Component {
     };
     render() {
         return (
-            <Slide left>
+            
                 <div>
                     <Nav />
+                    <Slide left>
                     <div className="container d-flex justify-content-center">
                         <div className="myEventsBackground justify-content-center">
                             <div className="myEventsTitle col text-center">
@@ -58,9 +59,10 @@ class MyEvents extends Component {
                             </div>
                         </div>
                     </div>
+                    </Slide >
                 </div>
 
-            </Slide >
+            
         )
     }
 }

@@ -1,6 +1,6 @@
 import ApplicationContext from "../../ApplicationContext";
 import React, { Component } from "react";
-import { Col, Row, Container } from "../../components/Grid";
+// import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea } from "../../components/Form";
 import "./Email.css";
 import TextField from '@material-ui/core/TextField';
@@ -106,11 +106,11 @@ class Email extends Component {
             return <Redirect to={`/myEvents/${this.state.user._id}`} />;
         } else {
             return (
-                <Container fluid>
-                    <Row>
-                        <Col size="12">
+                <div>
+                    <div className="row">
+                        <div className="col">
                             <form>
-                                <small>This will be a clickable link for you to find.</small>
+                                <small>Name your event to save it and find it easier later.</small>
                                 <Input
                                     value={this.state.eventName}
                                     onChange={this.handleInputChange}
@@ -140,41 +140,41 @@ class Email extends Component {
                                 />
                                 <small>Hover and click the arrow to choose a calendar date. Enter a time.
                                Invitation needs a date and time to send.</small>
-                           <div className="flex-row d-flex mb-3">
-                             <div className="textFieldBorder">
-                            <TextField
-                                id="datetime-local"
-                                label="Date/Time of Event"
-                                type="datetime-local"
-                                onChange={this.handleInputChange}
-                                value={this.state.eventDateTime ? this.state.eventDateTime : ""}
-                                name="eventDateTime"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
+                                <div className="row text-fields px-3 mb-3">
+                                    <div className="col d-flex textFieldBorder">
+                                        <TextField
+                                            id="datetime-local"
+                                            label="Date/Time of Event"
+                                            type="datetime-local"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.eventDateTime ? this.state.eventDateTime : ""}
+                                            name="eventDateTime"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="col d-flex textFieldBorder">
+                                        <TextField
+                                            id="datetime-local"
+                                            label="Order Must Be Placed By"
+                                            type="datetime-local"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.orderDateTime ? this.state.orderDateTime : ""}
+                                            name="orderDateTime"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                    </div>
                                 </div>
-                             <div className="textFieldBorder">
-                            <TextField
-                                id="datetime-local"
-                                label="Order Must Be Placed By"
-                                type="datetime-local"
-                                onChange={this.handleInputChange}
-                                value={this.state.orderDateTime ? this.state.orderDateTime : ""}
-                                name="orderDateTime"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                               </div>
-                            </div>
-                            <TextArea
-                                value={this.state.message}
-                                onChange={this.handleInputChange}
-                                name="message"
-                                placeholder="Email Message(Optional)"
-                            />
-                            <div className="d-flex align-items-center">
+                                <TextArea
+                                    value={this.state.message}
+                                    onChange={this.handleInputChange}
+                                    name="message"
+                                    placeholder="Email Message(Optional)"
+                                />
+                                <div className="d-flex align-items-center">
                                     <p className="emailLetterText">
                                         From </p>
                                     <Input
@@ -205,13 +205,11 @@ class Email extends Component {
                                         onClick={this.handleFormSubmit}>
                                         Send
                                 </button>
-
                                 </div>
                             </form>
-                        </Col>
-
-                    </Row>
-                </Container>
+                        </div>
+                    </div>
+                </div>
             )
         };
     }

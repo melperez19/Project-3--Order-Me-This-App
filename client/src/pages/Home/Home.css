@@ -12,9 +12,10 @@
     inset 8px 8px 4px rgba(0,0,0,0.3),
           8px 8px 4px rgba(0,0,0,0.3);
     box-shadow: 8px 8px 4px rgba(0,0,0,.3);
-    padding: 50px;
-    margin-bottom: 50px;
-    min-height: 390px;
+    padding: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    /* height: 90%; */
 }
 .homeArea {
     border: 2px solid rgb(0,172,173);
@@ -27,8 +28,9 @@
     inset 8px 0px 4px rgba(0,0,0,0.3),
           8px 0px 4px rgba(0,0,0,0.3);
     box-shadow: 8px 0px 4px rgba(0,0,0,.3);
+    width: 100%;
 }
-.form-group, .textFieldBorder {
+/* .form-group, .textFieldBorder {
     border: 2px solid rgba(0,172,173, .6);
     border-radius: 7px;
     -webkit-box-shadow: 
@@ -38,10 +40,8 @@
     inset 1px 1px 3px rgba(0,0,0,0.3),
           1px 1px 3px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 3px rgba(0,0,0,.3);
-}
-.textFieldBorder {
-      width: 257px;
-}
+} */
+
 .homeTitle{
     font-family: 'Laila', 'serif';
     font-size: 1.5rem;
