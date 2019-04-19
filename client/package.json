@@ -8,6 +8,7 @@
     "ag-grid-community": "^20.2.0",
     "ag-grid-react": "^20.2.0",
     "axios": "^0.18.0",
+    "mdbreact": "^4.13.0",
     "moment": "^2.24.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
